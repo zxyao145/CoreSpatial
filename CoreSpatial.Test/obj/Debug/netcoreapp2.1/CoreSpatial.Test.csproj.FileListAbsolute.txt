@@ -1,0 +1,14 @@
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\bin\Debug\netcoreapp2.1\CoreSpatial.Test.deps.json
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\bin\Debug\netcoreapp2.1\CoreSpatial.Test.runtimeconfig.json
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\bin\Debug\netcoreapp2.1\CoreSpatial.Test.runtimeconfig.dev.json
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\bin\Debug\netcoreapp2.1\CoreSpatial.Test.dll
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\bin\Debug\netcoreapp2.1\CoreSpatial.Test.pdb
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.csprojAssemblyReference.cache
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.csproj.CoreCompileInputs.cache
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.AssemblyInfoInputs.cache
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.AssemblyInfo.cs
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.dll
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.pdb
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\bin\Debug\netcoreapp2.1\CoreSpatial.dll
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\bin\Debug\netcoreapp2.1\CoreSpatial.pdb
+F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.csproj.CopyComplete
