@@ -1,10 +1,11 @@
 # CoreSpatial
 
 ### 用途
-CoreSpatial是基于.NET Core2.1实现的用以读取shapefile的类库，暂不能读取坐标投影文件及进行shp文件的写入。部分内容借鉴与DotSpatial
+CoreSpatial是基于.NET Core v2.1实现的用以读取shapefile的类库，暂不能读取坐标投影文件及进行shp文件的写入。
+在使用.net core v2.1进行开发的过程中需要读取shapefile，但是并未找到相关的类库，遂自己写了个。部分内容借鉴于DotSpatial。
 
 ### 项目信息
-+ .NET Core2.1
++ .NET Core v2.1
 + 目前版本为 v1.0.0.0
 
 
