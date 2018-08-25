@@ -17,6 +17,7 @@ IFeatureSet fs = FeatureSet.Open(shpPath);
 类似于DotSpatial，详见CoreSpatial.Test。
 
 ### 注意事项
++ 暂不能读取M值、Z值shp文件
 + 暂不能读取坐标投影文件
 + 暂不能进行shp文件的写入
 
