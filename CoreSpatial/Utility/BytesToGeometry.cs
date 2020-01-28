@@ -106,7 +106,8 @@ namespace CoreSpatial.Utility
         /// <typeparam name="T"></typeparam>
         /// <param name="recordContents"></param>
         /// <returns></returns>
-        private static IGeometry GetMultipointParts<T>(byte[] recordContents) where T:MultiPolyLine,new()
+        private static IGeometry GetMultipointParts<T>(byte[] recordContents) 
+            where T:MultiPolyLine,new()
         {
             //获取几何分了几部分，以及所有坐标点的数量
             PolyRecordFields recordNums = new PolyRecordFields(recordContents);
@@ -122,7 +123,11 @@ namespace CoreSpatial.Utility
             for (int n = 0; n < partsNum; n++)
             {
                 //判断这是不是最后一部分点，并计算本部分点共有多少个
-                int numPointsInPart = n < partsNum - 1 ? partIndex[n + 1] - partIndex[n] : recordNums.NumPoints - partIndex[n];
+                int numPointsInPart = 
+                    n < partsNum - 1 
+                    ? partIndex[n + 1] - partIndex[n] 
+                    : recordNums.NumPoints - partIndex[n];
+
                 //取出当前这部分的点
                 List<IGeoPoint> partPoints =
                     points.Skip(partIndex[n]).Take(numPointsInPart).ToList();
@@ -183,7 +188,7 @@ namespace CoreSpatial.Utility
             {
                 //该几何包含多少部分
                 this.NumParts = BitConverter.ToInt32(recordContents, 36);
-                //该几何包含多少个
+                //该几何包含多少个点
                 this.NumPoints = BitConverter.ToInt32(recordContents, 40);
             }
         }
@@ -207,4 +212,172 @@ namespace CoreSpatial.Utility
         #endregion
 
     }
+
+    internal static class GeometryToBytes
+    {
+        /// <summary>
+        /// 点
+        /// </summary>
+        /// <param name="geometry"></param>
+        /// <returns></returns>
+        public static IEnumerable<byte> GetPointBytes(IBasicGeometry geometry)
+        {
+            var point = (GeoPoint)geometry;
+            var bytes = new List<byte>();
+            bytes.AddRange(BitConverter.GetBytes(point.X));
+            bytes.AddRange(BitConverter.GetBytes(point.Y));
+            return bytes;
+        }
+
+        /// <summary>
+        /// 多点
+        /// </summary>
+        /// <param name="geometry"></param>
+        /// <returns></returns>
+        public static IEnumerable<byte> GetMultiPointBytes(IBasicGeometry geometry)
+        {
+            var multiPoint = (MultiPoint)geometry;
+            var bytes = new List<byte>();
+            MultiGeometryPreHandle(bytes, 
+                multiPoint.Envelope, multiPoint.PartsNum);
+
+            foreach (var point in multiPoint.Points)
+            {
+                bytes.AddRange(GetPointBytes(point));
+            }
+
+            return bytes;
+        }
+
+        /// <summary>
+        /// 线
+        /// </summary>
+        /// <param name="geometry"></param>
+        /// <returns></returns>
+        public static IEnumerable<byte> GetPolyLineBytes(IBasicGeometry geometry)
+        {
+            if (geometry.GetType().Name == "MultiPolyLine")
+            {
+                //var polyLine = ((MultiPolyLine)geometry).PolyLines[0];
+                return GetMultiPolyLineBytes(geometry);
+            }
+            else
+            {
+                var line = (PolyLine) geometry;
+                var bytes = new List<byte>();
+                foreach (var point in line.Points)
+                {
+                    bytes.AddRange(BitConverter.GetBytes(point.X));
+                    bytes.AddRange(BitConverter.GetBytes(point.Y));
+                }
+                return bytes;
+            }
+        }
+
+        /// <summary>
+        /// 多线
+        /// </summary>
+        /// <param name="geometry"></param>
+        /// <returns></returns>
+        public static IEnumerable<byte> GetMultiPolyLineBytes(IBasicGeometry geometry)
+        {
+            var bytes = new List<byte>();
+            var multiPolyLine = (MultiPolyLine)geometry;
+
+            MultiGeometryPreHandle(bytes,
+                multiPolyLine.Envelope,
+                multiPolyLine.PartsNum,
+                multiPolyLine.PointsNum
+                );
+
+            var firstPtIndexOfEveryPart =  new List<int>();
+            var curPtIndexOfAllPoints = 0;
+
+            var allPointsBytes = new List<byte>();
+            foreach (var polyLine in multiPolyLine.PolyLines)
+            {
+                firstPtIndexOfEveryPart.Add(curPtIndexOfAllPoints);
+                curPtIndexOfAllPoints += polyLine.PointsNum;
+
+                allPointsBytes.AddRange(GetPolyLineBytes(polyLine));
+            }
+
+            foreach (var i in firstPtIndexOfEveryPart)
+            {
+                bytes.AddRange(BitConverter.GetBytes(i));
+            }
+            bytes.AddRange(allPointsBytes);
+
+            return bytes;
+        }
+
+        /// <summary>
+        /// 面
+        /// </summary>
+        /// <param name="geometry"></param>
+        /// <returns></returns>
+        public static IEnumerable<byte> GetPolygonBytes(IBasicGeometry geometry)
+        {
+            return GetMultiPolyLineBytes(geometry);
+        }
+
+        /// <summary>
+        /// 多面
+        /// </summary>
+        /// <param name="geometry"></param>
+        /// <returns></returns>
+        public static IEnumerable<byte> GetMultiPolygonBytes(IBasicGeometry geometry)
+        {
+            var bytes = new List<byte>();
+            //var multiPolyLine = (MultiPolygon)geometry;
+
+            //MultiGeometryPreHandle(bytes,
+            //    multiPolyLine.Envelope, multiPolyLine.PartsNum);
+
+            //foreach (var polyLine in multiPolyLine.PolyLines)
+            //{
+            //    bytes.AddRange(GetPolyLineBytes(polyLine));
+            //}
+            return bytes;
+        }
+
+
+        /// <summary>
+        /// 多部件几何预处理
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <param name="envelope"></param>
+        /// <param name="partNum"></param>
+        /// <param name="pointNum"></param>
+        private static void MultiGeometryPreHandle(List<byte> bytes,
+            IEnvelope envelope,
+            int partNum,int? pointNum = null)
+        {
+            //box
+            bytes.AddRange(
+                BitConverter.GetBytes(envelope.MinX)
+            );
+            bytes.AddRange(
+                BitConverter.GetBytes(envelope.MinY)
+            );
+            bytes.AddRange(
+                BitConverter.GetBytes(envelope.MaxX)
+            );
+            bytes.AddRange(
+                BitConverter.GetBytes(envelope.MaxY)
+            );
+            //num of part
+            bytes.AddRange(
+                BitConverter.GetBytes(partNum)
+            );
+
+            if (pointNum != null)
+            {
+                bytes.AddRange(
+                    BitConverter.GetBytes(pointNum.Value)
+                );
+            }
+        }
+    }
+
 }

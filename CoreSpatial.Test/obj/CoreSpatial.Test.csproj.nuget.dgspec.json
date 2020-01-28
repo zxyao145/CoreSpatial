@@ -1,0 +1,132 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial.Test\\CoreSpatial.Test.csproj": {}
+  },
+  "projects": {
+    "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial.Test\\CoreSpatial.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial.Test\\CoreSpatial.Test.csproj",
+        "projectName": "CoreSpatial.Test",
+        "projectPath": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial.Test\\CoreSpatial.Test.csproj",
+        "packagesPath": "C:\\Users\\zhang\\.nuget\\packages\\",
+        "outputPath": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial.Test\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zhang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://nuget.cdn.azure.cn/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {
+                "projectPath": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {
+      "version": "0.1.0",
+      "restore": {
+        "projectUniqueName": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
+        "projectName": "CoreSpatial",
+        "projectPath": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
+        "packagesPath": "C:\\Users\\zhang\\.nuget\\packages\\",
+        "outputPath": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zhang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://nuget.cdn.azure.cn/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "ProjNet": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "System.Text.Encoding.CodePages": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

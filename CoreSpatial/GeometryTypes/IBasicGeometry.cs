@@ -2,5 +2,6 @@
 {
     public interface IBasicGeometry
     {
+        IEnvelope Envelope { get; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text;
 using CoreSpatial;
 using CoreSpatial.GeometryTypes;
 
@@ -11,31 +12,57 @@ namespace CoreSpatial.Test
     {
         static void Main(string[] args)
         {
-            string[] files = Directory.GetFiles("../测试Data", "*.shp");
+            ReadTest();
 
-            foreach (var file in files)
-            {
-                Console.WriteLine(new string('*', 100));
-                Console.WriteLine(Path.GetFileName(file));
-                Test1Shp(file);
-                foreach (var item in Enumerable.Range(1,5))
-                {
-                    Console.Write(Environment.NewLine);
-                }
-            }
+            SaveTest();
 
             Console.WriteLine();
             Console.WriteLine("Finish!");
             Console.ReadLine();
         }
 
-        static void Test1Shp(string shpPath)
+        static void SaveTest()
+        {
+            string[] files = Directory.GetFiles("../测试Data", 
+                "*.shp");
+
+            foreach (var shpPath in files)
+            {
+                Console.WriteLine(Path.GetFileName(shpPath));
+
+                IFeatureSet fs = FeatureSet.Open(shpPath);
+                Console.WriteLine(new string('*', 100));
+
+                var newFile = Path.Combine(Path.GetDirectoryName(shpPath), "../saveTest/" + Path.GetFileName(shpPath));
+
+                fs.Save(newFile);
+            }
+        }
+
+        static void ReadTest()
+        {
+            string[] files = Directory.GetFiles("../测试Data", "*.shp");
+
+            foreach (var file in files)
+            {
+                Console.WriteLine(new string('*', 100));
+                Console.WriteLine(Path.GetFileName(file));
+                ReadTest1Shp(file);
+                foreach (var item in Enumerable.Range(1, 5))
+                {
+                    Console.Write(Environment.NewLine);
+                }
+            }
+        }
+
+        static void ReadTest1Shp(string shpPath)
         {
             IFeatureSet fs = FeatureSet.Open(shpPath);
             Console.WriteLine("FeatureType：" + fs.FeatureType);
             Console.WriteLine();
 
             var dataTable = fs.AttrTable;
+
             Console.WriteLine("属性表字段：");
             foreach (DataColumn col in dataTable.Columns)
             {

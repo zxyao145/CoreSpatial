@@ -3,8 +3,19 @@ using CoreSpatial.Utility;
 
 namespace CoreSpatial.GeometryTypes
 {
-    public struct GeoPoint: IGeoPoint
+    public class GeoPoint: IGeoPoint
     {
+        public GeoPoint()
+        {
+            
+        }
+
+        public GeoPoint(double x,double y)
+        {
+            X = x;
+            Y = y;
+        }
+
         /// <summary>
         /// X坐标
         /// </summary>
@@ -18,7 +29,7 @@ namespace CoreSpatial.GeometryTypes
 
         public static bool operator==(GeoPoint geoPoint1, GeoPoint geoPoint2)
         {
-            if ((Math.Abs(geoPoint1.X - geoPoint2.X) < ShpUtility.DValue)&& (Math.Abs(geoPoint1.Y - geoPoint2.Y) < ShpUtility.DValue))
+            if ((Math.Abs(geoPoint1.X - geoPoint2.X) < ShpUtil.DValue)&& (Math.Abs(geoPoint1.Y - geoPoint2.Y) < ShpUtil.DValue))
             {
                 return true;
             }
@@ -53,5 +64,7 @@ namespace CoreSpatial.GeometryTypes
         {
             return $"[{X},{Y}]";
         }
+
+        public IEnvelope Envelope => new Envelope(X, Y, X, Y);
     }
 }

@@ -1,9 +1,0 @@
-F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial\bin\Debug\netcoreapp2.1\CoreSpatial.deps.json
-F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial\bin\Debug\netcoreapp2.1\CoreSpatial.dll
-F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial\bin\Debug\netcoreapp2.1\CoreSpatial.pdb
-F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp2.1\CoreSpatial.csprojAssemblyReference.cache
-F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp2.1\CoreSpatial.csproj.CoreCompileInputs.cache
-F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp2.1\CoreSpatial.AssemblyInfoInputs.cache
-F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp2.1\CoreSpatial.AssemblyInfo.cs
-F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp2.1\CoreSpatial.dll
-F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp2.1\CoreSpatial.pdb

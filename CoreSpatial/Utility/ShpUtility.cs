@@ -1,17 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using CoreSpatial.Extensions;
 using CoreSpatial.GeometryTypes;
 using CoreSpatial.ShpOper;
 using CoreSpatial.ShpOper.ShapefileModel;
 
 namespace CoreSpatial.Utility
 {
-    internal static class ShpUtility
+    internal static class ShpUtil
     {
         /// <summary>
         /// 判断两个double是否相等的差值极限，此用以判断坐标的X、Y值
         /// </summary>
-        public static double DValue => 0.0000000000d;
+        public static double DValue => 1e-8d;
 
         /// <summary>
         /// 文件头的长度，100 byte
@@ -54,6 +57,70 @@ namespace CoreSpatial.Utility
         }
 
         /// <summary>
+        /// 从IFeatureSet中构建builder
+        /// </summary>
+        /// <param name="featureSet"></param>
+        /// <returns></returns>
+        internal static byte[] BuildHeader(IFeatureSet featureSet)
+        {
+            var header = new List<byte>(100);
+            //0-3
+            header.AddRange(BigOrderBitConverter.GetBytes(0x0000270a));
+            var notUseValue = BigOrderBitConverter.GetBytes(0).ToArray();
+            //4-7、8-11、12-15、16-19、20-23
+            header.AddRange(notUseValue);
+            header.AddRange(notUseValue);
+            header.AddRange(notUseValue);
+            header.AddRange(notUseValue);
+            header.AddRange(notUseValue);
+            //24-27 文件长度，包括文件头。
+            header.AddRange(notUseValue);
+            // 以下小端序
+            // 版本28-31
+            var version = BitConverter.GetBytes(1000);//new byte[] {0xE8, 0x03, 0, 0};
+            header.AddRange(version);
+            // 图形类型（参见下面）
+            var geometryType = (int)featureSet.FeatureType;
+            var geometryTypeBytes = BitConverter.GetBytes(geometryType);
+            
+            header.AddRange(geometryTypeBytes);
+            //MBR
+            var envelope = featureSet.Envelope;
+            header.AddRange(
+                BitConverter.GetBytes(envelope.MinX)
+                );
+            header.AddRange(
+                BitConverter.GetBytes(envelope.MinY)
+            );
+            header.AddRange(
+                BitConverter.GetBytes(envelope.MaxX)
+            );
+            header.AddRange(
+                BitConverter.GetBytes(envelope.MaxY)
+            );
+            //Z坐标值的范围
+            var minZ = envelope.MinZ;
+            var maxZ = envelope.MaxZ;
+            //M坐标值的范围
+            header.AddRange(
+                BitConverter.GetBytes(minZ)
+            );
+            header.AddRange(
+                BitConverter.GetBytes(maxZ)
+            );
+
+            var minM = envelope.MinZ;
+            var maxM = envelope.MaxZ;
+            header.AddRange(
+                BitConverter.GetBytes(minM)
+            );
+            header.AddRange(
+                BitConverter.GetBytes(maxM)
+            );
+            return header.ToArray();
+        }
+
+        /// <summary>
         /// 获取shp/shx文件的文件头
         /// </summary>
         /// <param name="stream">shp文件流或者shx文件的文件流</param>
@@ -64,7 +131,7 @@ namespace CoreSpatial.Utility
             try
             {
                 stream.Position = 0;
-                shpfileHeader = new ShpOrShxHeader(ShpUtility.ReadBytesFromStream(stream, HeaderLengthInBytes));
+                shpfileHeader = new ShpOrShxHeader(ShpUtil.ReadBytesFromStream(stream, HeaderLengthInBytes));
             }
             catch (Exception e)
             {
@@ -93,6 +160,42 @@ namespace CoreSpatial.Utility
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 验证shp文件是否有效，shp、shx、dbf三个文件是否存在
+        /// </summary>
+        /// <param name="shpFilePath"></param>
+        /// <param name="subFiles"></param>
+        /// <returns></returns>
+        internal static bool VerificationShp(string shpFilePath,out Tuple<string,string,string> subFiles)
+        {
+            subFiles = GetSubFileName(shpFilePath);
+            var (shxFile, dbfFile, pfj) = subFiles;
+            if (File.Exists(shpFilePath) && File.Exists(shxFile) && File.Exists(dbfFile))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 根据shp文件获取.shx文件、.dbf文件、.prj文件路径
+        /// </summary>
+        /// <param name="shpFilePath"></param>
+        /// <returns></returns>
+        internal static Tuple<string, string, string> GetSubFileName(string shpFilePath)
+        {
+            var shpDir = Path.GetDirectoryName(shpFilePath);
+            var shpNameWithoutExtension = Path.GetFileNameWithoutExtension(shpFilePath);
+            string shxFile = Path.Combine(shpDir, shpNameWithoutExtension + ".shx");
+            string dbfFile = Path.Combine(shpDir, shpNameWithoutExtension + ".dbf");
+            string prj = Path.Combine(shpDir, shpNameWithoutExtension + ".prj");
+
+            return new Tuple<string, string, string>(shxFile, dbfFile, prj);
         }
 
         /// <summary>

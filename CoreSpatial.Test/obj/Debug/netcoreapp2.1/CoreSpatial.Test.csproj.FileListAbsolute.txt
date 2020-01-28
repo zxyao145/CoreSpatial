@@ -12,3 +12,8 @@ F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\Co
 F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\bin\Debug\netcoreapp2.1\CoreSpatial.dll
 F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\bin\Debug\netcoreapp2.1\CoreSpatial.pdb
 F:\1Programs\5ZxySpatial\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.csproj.CopyComplete
+C:\Users\zhang\source\repos\VGIS\VGis.GeoData\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.dll
+C:\Users\zhang\source\repos\VGIS\VGis.GeoData\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.pdb
+C:\Users\zhang\source\repos\VGIS\VGis.GeoData\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.csprojAssemblyReference.cache
+C:\Users\zhang\source\repos\VGIS\VGis.GeoData\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.AssemblyInfoInputs.cache
+C:\Users\zhang\source\repos\VGIS\VGis.GeoData\CoreSpatial\CoreSpatial.Test\obj\Debug\netcoreapp2.1\CoreSpatial.Test.AssemblyInfo.cs
