@@ -1,6 +1,6 @@
 # CoreSpatial
 
-中文 [中文](https://github.com/zxyao145/CoreSpatial/blob/master/README.md)
+[中文](./README.md)
 
 ### Purpose
 CoreSpatial is a class library based on .Net core v3.1 to read and write shapefiles. It supports the reading and writing of projection file .prj (support by ProjNet).
