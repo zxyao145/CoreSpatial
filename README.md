@@ -1,5 +1,7 @@
 # CoreSpatial
 
+English [English](https://github.com/zxyao145/CoreSpatial/blob/master/README-en.md)
+
 ### 用途
 CoreSpatial是基于.NET Core v3.1实现的用以读写shapefile的类库，支持投影文件.prj的读写。
 在使用.net core v3.1进行开发的过程中需要读取shapefile，但是并未找到相关的类库，遂自己写了个。
