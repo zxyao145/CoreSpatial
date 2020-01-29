@@ -7,7 +7,7 @@ CoreSpatial is a class library based on .Net core v3.1 to read and write shapefi
 
 ### Project information
 + .NET Core v3.1
-+ Current version v0.1.0
++ Current version v0.1.1
 + Supports the reading and writing of shapefile
 + Using **ProjNet** to support reading and writing .prj files
 
