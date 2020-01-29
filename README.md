@@ -7,7 +7,7 @@ CoreSpatial是基于.NET Core v3.1实现的用以读写shapefile的类库，支�
 
 ### 项目信息
 + .NET Core v3.1
-+ 目前版本为 v0.1.0
++ 目前版本为 v0.1.1
 + 支持shapefile的读写
 + 使用ProjNet支持对.prj文件的读写
 
