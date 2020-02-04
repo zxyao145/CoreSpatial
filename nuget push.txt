@@ -1,1 +1,0 @@
-dotnet nuget push CoreSpatial.0.1.1.nupkg -k oy2cjpcqftiz5b2g6qtaonqlnrguivee3pgcpxt7gaqyoa -s https://api.nuget.org/v3/index.json
