@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using CoreSpatial.ShpOper.ShapefileModel;
+using CoreSpatial.ShapeFile.ShapefileModel;
 using CoreSpatial.Utility;
 
-namespace CoreSpatial.ShpOper
+namespace CoreSpatial.ShapeFile
 {
     /// <summary>
     /// 读取shp文件
@@ -13,9 +12,15 @@ namespace CoreSpatial.ShpOper
     internal class ShpReader:IDisposable
     {
         public ShpReader(string shpFilePath, List<ShxRecord> shxRecords)
+        :this(new FileStream(shpFilePath, FileMode.Open, FileAccess.Read, FileShare.Read), shxRecords)
+        {
+            
+        }
+
+        public ShpReader(FileStream shpFileStream, List<ShxRecord> shxRecords)
         {
             _shxRecords = shxRecords;
-            _readStream = new FileStream(shpFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            _readStream = shpFileStream;
             this.ShpHeader = ShpUtil.GetHeader(_readStream);
         }
 

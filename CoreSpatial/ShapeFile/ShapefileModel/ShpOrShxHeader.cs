@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CoreSpatial.ShpOper.ShapefileModel
+namespace CoreSpatial.ShapeFile.ShapefileModel
 {
     /// <summary>
     /// shp或shx文件的文件头，除了FileLength外，两者是相同的

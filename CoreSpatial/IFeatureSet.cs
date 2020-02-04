@@ -33,9 +33,10 @@ namespace CoreSpatial
         IEnvelope Envelope { get; set; }
 
         /// <summary>
-        /// 保存
+        /// 保存FeatureSet到硬盘
         /// </summary>
         /// <param name="newShpFilePath"></param>
-        void Save(string newShpFilePath = null);
+        /// <returns>shapefile在硬盘上的保存目录</returns>
+        string Save(string newShpFilePath = null);
     }
 }

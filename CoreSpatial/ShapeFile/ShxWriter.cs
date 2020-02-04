@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using CoreSpatial.Extensions;
 using CoreSpatial.Utility;
 
-namespace CoreSpatial.ShpOper
+namespace CoreSpatial.ShapeFile
 {
     internal class ShxWriter: IDisposable
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CoreSpatial.ShpOper.ShapefileModel
+namespace CoreSpatial.ShapeFile.ShapefileModel
 {
     /// <summary>
     /// 一条空间实体信息的索引记录

@@ -213,7 +213,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "restore": {
       "projectUniqueName": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
       "projectName": "CoreSpatial",

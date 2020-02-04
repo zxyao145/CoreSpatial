@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CoreSpatial.ShpOper.ShapefileModel
+namespace CoreSpatial.ShapeFile.ShapefileModel
 {
     internal class Shapefile
     {

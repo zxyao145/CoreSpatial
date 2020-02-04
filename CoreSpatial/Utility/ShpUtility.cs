@@ -4,8 +4,7 @@ using System.IO;
 using System.Linq;
 using CoreSpatial.Extensions;
 using CoreSpatial.GeometryTypes;
-using CoreSpatial.ShpOper;
-using CoreSpatial.ShpOper.ShapefileModel;
+using CoreSpatial.ShapeFile.ShapefileModel;
 
 namespace CoreSpatial.Utility
 {

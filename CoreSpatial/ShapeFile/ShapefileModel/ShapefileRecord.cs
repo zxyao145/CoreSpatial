@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CoreSpatial.ShpOper.ShapefileModel
+namespace CoreSpatial.ShapeFile.ShapefileModel
 {
     /// <summary>
     /// 一个记录段

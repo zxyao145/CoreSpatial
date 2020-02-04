@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using CoreSpatial.GeometryTypes;
-using CoreSpatial.ShpOper;
 
 namespace CoreSpatial
 {

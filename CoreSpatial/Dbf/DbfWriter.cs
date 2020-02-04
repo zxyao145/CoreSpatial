@@ -15,7 +15,7 @@ namespace CoreSpatial.Dbf
         private readonly DataColumnCollection _dataColumns;
         private List<DbfFieldInfo> _fieldInfos;
 
-        public DbfWriter(string path, DataTable dataTable,
+        public DbfWriter(DataTable dataTable, string path, 
             Encoding encoding = null)
         {
             var ext = Path.GetExtension(path);

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using CoreSpatial.GeometryTypes;
-using CoreSpatial.ShpOper;
+using CoreSpatial.ShapeFile;
 using CoreSpatial.Utility;
 
 namespace CoreSpatial
@@ -33,18 +34,38 @@ namespace CoreSpatial
 
             var fs = ShpManager.CreateFeatureSet(shpPath, encoding);
             fs._shpFilePath = shpPath;
-
             return fs;
         }
 
-        public void Save(string newShpFilePath = null)
+        public static FeatureSet Open(FileStream shpFileStream, FileStream shxFileStream,
+            FileStream dbfFileStream, FileStream prjFileStream = null, Encoding encoding = null)
+        {
+            if (encoding == null)
+            {
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                encoding = Encoding.GetEncoding("GB2312");
+            }
+            var fs = ShpManager.CreateFeatureSet(shpFileStream, shxFileStream, dbfFileStream, encoding, prjFileStream);
+            fs._shpFilePath = null;
+            return fs;
+        }
+
+        /// <summary>
+        /// 保存FeatureSet到硬盘
+        /// </summary>
+        /// <param name="newShpFilePath"></param>
+        /// <returns>shapefile在硬盘上的保存目录</returns>
+        public string Save(string newShpFilePath = null)
         {
             if (newShpFilePath == null)
             {
-                newShpFilePath = _shpFilePath;
+                newShpFilePath = string.IsNullOrEmpty(_shpFilePath) 
+                    ? Path.Combine(Path.GetTempPath(), "CoreSpatial") 
+                    : _shpFilePath;
             }
 
             ShpManager.SaveFeatureSet(this, newShpFilePath);
+            return newShpFilePath;
         }
 
 

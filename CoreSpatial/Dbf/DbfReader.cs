@@ -29,7 +29,24 @@ namespace CoreSpatial.Dbf
             {
                 throw new IOException($"Dbf文件不存在：{dbfFilePath}");
             }
-            _readStream = new FileStream(dbfFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+
+            var fs = new FileStream(dbfFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            Init(fs, encoding);
+        }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="dbfFileStream">dbf FileStream</param>
+        /// <param name="encoding"></param>
+        public DbfReader(FileStream dbfFileStream, Encoding encoding = null)
+        {
+            Init(dbfFileStream, encoding);
+        }
+
+        private void Init(FileStream dbfFileStream, Encoding encoding = null)
+        {
+            _readStream = dbfFileStream;
             _encoding = encoding ?? Encoding.ASCII;
             _reader = new BinaryReader(_readStream, _encoding);
             ReadHeader();

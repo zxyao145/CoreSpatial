@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using CoreSpatial.GeometryTypes;
-using CoreSpatial.ShpOper;
 
 namespace CoreSpatial
 {

@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "CoreSpatial.Test/1.0.0": {
         "dependencies": {
-          "CoreSpatial": "0.1.0"
+          "CoreSpatial": "0.1.1"
         },
         "runtime": {
           "CoreSpatial.Test.dll": {}
@@ -34,7 +34,7 @@
           "Microsoft.NETCore.Platforms": "3.1.0"
         }
       },
-      "CoreSpatial/0.1.0": {
+      "CoreSpatial/0.1.1": {
         "dependencies": {
           "ProjNET": "2.0.0",
           "System.Text.Encoding.CodePages": "4.7.0"
@@ -86,7 +86,7 @@
       "path": "system.text.encoding.codepages/4.7.0",
       "hashPath": "system.text.encoding.codepages.4.7.0.nupkg.sha512"
     },
-    "CoreSpatial/0.1.0": {
+    "CoreSpatial/0.1.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

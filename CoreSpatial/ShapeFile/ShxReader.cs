@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using CoreSpatial.ShpOper.ShapefileModel;
+using CoreSpatial.ShapeFile.ShapefileModel;
 using CoreSpatial.Utility;
 
-namespace CoreSpatial.ShpOper
+namespace CoreSpatial.ShapeFile
 {
     internal class ShxReader
     {
@@ -18,18 +18,23 @@ namespace CoreSpatial.ShpOper
             {
                 throw new Exception("索引文件不存在！");
             }
+            var readStream = new FileStream(shxFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-            using (var readStream = new FileStream(shxFilePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            return ReadShx(readStream);
+        }
+
+        public List<ShxRecord> ReadShx(FileStream shxFileStream)
+        {
+            if (shxFileStream.CanRead)
             {
-                if (readStream.CanRead)
-                {
-                    var shxIndex = GetAllIndexRecords(readStream);
-                    return shxIndex;
-                }
-                else
-                {
-                    throw new Exception("索引文件不可读！");
-                }
+                var shxIndex = GetAllIndexRecords(shxFileStream);
+                shxFileStream.Dispose();
+                return shxIndex;
+            }
+            else
+            {
+                shxFileStream.Dispose();
+                throw new Exception("索引文件不可读！");
             }
         }
 

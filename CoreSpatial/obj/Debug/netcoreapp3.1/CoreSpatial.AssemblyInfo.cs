@@ -11,10 +11,13 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("CoreSpatial")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("zxyao")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute("\r\n      CoreSpatial is a class library based on .Net core v3.1 to read and write " +
+    "shapefiles. It supports the reading and writing of projection file .prj (support" +
+    " by ProjNet).\r\n    ")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.1.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.1.1")]
 [assembly: System.Reflection.AssemblyProductAttribute("CoreSpatial")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CoreSpatial")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.1.0.0")]
