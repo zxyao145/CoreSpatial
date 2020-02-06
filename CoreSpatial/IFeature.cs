@@ -15,7 +15,7 @@ namespace CoreSpatial
         /// <summary>
         /// 当前要素的属性信息
         /// </summary>
-        DataRow Properties { get; }
+        DataRow DataRow { get; }
 
         /// <summary>
         /// 当前要素的几何信息

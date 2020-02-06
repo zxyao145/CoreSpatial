@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using CoreSpatial;
-using CoreSpatial.GeometryTypes;
+using CoreSpatial.BasicGeometrys;
 
 namespace CoreSpatial.Test
 {
@@ -98,7 +98,7 @@ namespace CoreSpatial.Test
                 }
                 Console.WriteLine("\r\n属性信息：");
 
-                var datarow = fe.Properties.ItemArray;
+                var datarow = fe.DataRow.ItemArray;
                 foreach (var o in datarow)
                 {
                     Console.Write(o + "\t");

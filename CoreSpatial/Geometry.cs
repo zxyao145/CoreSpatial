@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CoreSpatial.GeometryTypes;
+using CoreSpatial.BasicGeometrys;
 
 namespace CoreSpatial
 {
     public class Geometry: IGeometry
     {
-        public List<IGeoPoint> Points
+        public List<GeoPoint> Points
         {
             #region MyRegion
             //get
@@ -41,7 +41,7 @@ namespace CoreSpatial
             set;
         }
 
-        public GeometryType GeometryType { get; set; }
+        public GeometryType GeometryType => BasicGeometry.GeometryType;
 
         public IBasicGeometry BasicGeometry { get; set; }
     }

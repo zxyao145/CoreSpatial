@@ -6,6 +6,8 @@ namespace CoreSpatial
 {
     public interface IFeatureList: IEnumerable<IFeature>
     {
+        int Count { get; }
+        IFeature this[int index] { get; set; }
         void Add(IFeature feature);
         void RemoveAt(int index);
         void Remove(IFeature feature);

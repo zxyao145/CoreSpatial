@@ -1,4 +1,4 @@
-﻿using CoreSpatial.GeometryTypes;
+﻿using CoreSpatial.BasicGeometrys;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 

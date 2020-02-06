@@ -5,7 +5,6 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using CoreSpatial.GeometryTypes;
 using CoreSpatial.ShapeFile;
 using CoreSpatial.Utility;
 

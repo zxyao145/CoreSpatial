@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CoreSpatial.GeometryTypes;
+﻿using System.Collections.Generic;
+using CoreSpatial.BasicGeometrys;
 
 namespace CoreSpatial
 {
     public interface IGeometry
     {
-        List<IGeoPoint> Points { get;}
-        GeometryType GeometryType { get; set; }
+        List<GeoPoint> Points { get; }
+        GeometryType GeometryType { get; }
 
         IBasicGeometry BasicGeometry { get; set; }
     }

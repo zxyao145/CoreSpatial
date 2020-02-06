@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
-using CoreSpatial.GeometryTypes;
 
 namespace CoreSpatial
 {
@@ -13,6 +12,11 @@ namespace CoreSpatial
             ParentFeatureSet = parentFeatureSet;
         }
 
+        public Feature(IGeometry geometry)
+        {
+            Geometry = geometry;
+        }
+        
         /// <summary>
         /// 要素的Fid
         /// </summary>
@@ -21,7 +25,7 @@ namespace CoreSpatial
         /// <summary>
         /// 当前要素的属性信息
         /// </summary>
-        public DataRow Properties => ParentFeatureSet.AttrTable.Rows[Fid];
+        public DataRow DataRow => ParentFeatureSet.AttrTable.Rows[Fid];
 
         /// <summary>
         /// 当前要素的几何信息

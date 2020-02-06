@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using CoreSpatial.GeometryTypes;
+using CoreSpatial.BasicGeometrys;
 
 
 namespace CoreSpatial.Utility
@@ -18,16 +18,15 @@ namespace CoreSpatial.Utility
             if (buffer.Length >= 20)
             {
                 GeoPoint point = new GeoPoint
-                {
-                    X = BitConverter.ToDouble(buffer, 4),
-                    Y = BitConverter.ToDouble(buffer, 12)
-                };
+                (
+                   BitConverter.ToDouble(buffer, 4),
+                    BitConverter.ToDouble(buffer, 12)
+                );
                 IBasicGeometry basicGeometry = point;
                 IGeometry geometry = new Geometry()
                 {
                     BasicGeometry = basicGeometry,
-                    GeometryType = GeometryType.Point,
-                    Points = new List<IGeoPoint>() { point }
+                    Points = new List<GeoPoint>() { point }
                 };
                 return geometry;
             }
@@ -43,7 +42,7 @@ namespace CoreSpatial.Utility
             {
                 int numPoints = BitConverter.ToInt32(buffer, 36);
                 
-                List<IGeoPoint> points = new List<IGeoPoint>();
+                var points = new List<GeoPoint>();
                 for (int i = 0; i < numPoints; i++)
                 {
                     GeoPoint point = new GeoPoint
@@ -53,15 +52,12 @@ namespace CoreSpatial.Utility
                     };
                     points.Add(point);
                 }
-                IBasicGeometry basicGeometry = new MultiPoint()
-                {
-                    Points = points
-                };
+
+                IBasicGeometry basicGeometry = new MultiPoint(points);
 
                 IGeometry geometry = new Geometry()
                 {
                     BasicGeometry = basicGeometry,
-                    GeometryType = GeometryType.MultiPoint,
                     Points =  points
                 };
                 return geometry;
@@ -111,7 +107,7 @@ namespace CoreSpatial.Utility
             //获取几何分了几部分，以及所有坐标点的数量
             PolyRecordFields recordNums = new PolyRecordFields(recordContents);
             //获取记录中的所有的坐标点
-            List<IGeoPoint> points = GetPolyPoints(recordNums.NumPoints, recordNums.NumParts, recordContents);
+            var points = GetPolyPoints(recordNums.NumPoints, recordNums.NumParts, recordContents);
 
             //按照部分划分这些点
             List<PolyLine> multiparts = new List<PolyLine>();
@@ -128,16 +124,15 @@ namespace CoreSpatial.Utility
                     : recordNums.NumPoints - partIndex[n];
 
                 //取出当前这部分的点
-                List<IGeoPoint> partPoints =
+                var partPoints =
                     points.Skip(partIndex[n]).Take(numPointsInPart).ToList();
 
-                PolyLine multiPoint = new PolyLine { Points = partPoints};
+                PolyLine multiPoint = new PolyLine(partPoints);
                 multiparts.Add(multiPoint);
             }
 
             IBasicGeometry polygon = new T()
             {
-                PartsNum = partsNum,
                 PolyLines = multiparts
             };
 
@@ -147,7 +142,6 @@ namespace CoreSpatial.Utility
             IGeometry geometry = new Geometry()
             {
                 BasicGeometry = polygon,
-                GeometryType = geometryType,
                 Points = points
             };
             return geometry;
@@ -160,12 +154,12 @@ namespace CoreSpatial.Utility
         /// <param name="numParts"></param>
         /// <param name="recordContents"></param>
         /// <returns></returns>
-        private static List<IGeoPoint> GetPolyPoints(int numPoints, int numParts, byte[] recordContents)
+        private static List<GeoPoint> GetPolyPoints(int numPoints, int numParts, byte[] recordContents)
         {
             //计算需要跳过多少个byte
             int bytesToSkip = 44 + (4 * numParts);
 
-            List<IGeoPoint> points = new List<IGeoPoint>();
+            var points = new List<GeoPoint>();
             for (int j = 0; j < numPoints; j++)
             {
                 GeoPoint point = new GeoPoint

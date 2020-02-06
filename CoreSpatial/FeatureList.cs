@@ -16,7 +16,15 @@ namespace CoreSpatial
         private IFeatureSet _featureSet;
 
         private List<IFeature> _features;
-        
+
+        public int Count => _features.Count;
+
+        public IFeature this[int index]
+        {
+            get => _features [index];
+            set => _features[index] = value;
+        }
+
         public void Add(IFeature feature)
         {
             _features.Add(feature);
