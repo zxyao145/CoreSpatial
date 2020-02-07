@@ -107,13 +107,13 @@ namespace CoreSpatial.Dbf
                 {
                     var reminderLength =
                         curFieldInfo.FieldLength - originalValBytes.Length;
-                    for (int i = 0; i < reminderLength; i++)
+                    for (int i = originalValBytes.Length; i < curFieldInfo.FieldLength; i++)
                     {
                         writeBytes[i] = 0x20;
                     }
 
                     Buffer.BlockCopy(originalValBytes, 0,
-                        writeBytes, reminderLength, originalValBytes.Length);
+                        writeBytes, 0, originalValBytes.Length);
                     
                 }
 

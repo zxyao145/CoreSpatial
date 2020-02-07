@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 
 namespace CoreSpatial
 {
-    public class FeatureList:IFeatureList
+    public class FeatureList : IFeatureList
     {
         public FeatureList(IFeatureSet featureSet)
         {
@@ -21,13 +23,32 @@ namespace CoreSpatial
 
         public IFeature this[int index]
         {
-            get => _features [index];
+            get => _features[index];
             set => _features[index] = value;
         }
 
         public void Add(IFeature feature)
         {
-            _features.Add(feature);
+            var fe = ((Feature)feature);
+            fe.ParentFeatureSet = _featureSet;
+            _features.Add(fe);
+        }
+
+        public void AddRange(IEnumerable<IFeature> features)
+        {
+            var newFeatures = features.Select(e =>
+            {
+                var fe = (Feature)e;
+                fe.ParentFeatureSet = _featureSet;
+                return fe;
+            });
+            _features.AddRange(newFeatures);
+        }
+
+        public void Set(IEnumerable<IFeature> features)
+        {
+            _features.Clear();
+            AddRange(features);
         }
 
         public void RemoveAt(int index)

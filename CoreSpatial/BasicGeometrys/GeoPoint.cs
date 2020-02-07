@@ -109,13 +109,16 @@ namespace CoreSpatial.BasicGeometrys
         {
             #region check null
 
-            if (geoPoint1 == null && geoPoint2 == null)
+            var point1IsNull = object.ReferenceEquals(geoPoint1, null);
+            var point2IsNull = object.ReferenceEquals(geoPoint2, null);
+
+            if (point1IsNull && point2IsNull)
             {
                 return true;
             }
             //else
-            if (geoPoint1 == null || geoPoint2 == null)
-            {
+            if (point1IsNull || point2IsNull) 
+            { 
                 return false;
             }
 
@@ -149,7 +152,7 @@ namespace CoreSpatial.BasicGeometrys
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj == null)
+            if (object.ReferenceEquals(obj, null))
             {
                 throw new ArgumentNullException();
             }

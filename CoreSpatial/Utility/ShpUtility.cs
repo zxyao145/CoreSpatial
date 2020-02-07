@@ -187,11 +187,9 @@ namespace CoreSpatial.Utility
         /// <returns></returns>
         internal static Tuple<string, string, string> GetSubFileName(string shpFilePath)
         {
-            var shpDir = Path.GetDirectoryName(shpFilePath);
-            var shpNameWithoutExtension = Path.GetFileNameWithoutExtension(shpFilePath);
-            string shxFile = Path.Combine(shpDir, shpNameWithoutExtension + ".shx");
-            string dbfFile = Path.Combine(shpDir, shpNameWithoutExtension + ".dbf");
-            string prj = Path.Combine(shpDir, shpNameWithoutExtension + ".prj");
+            string shxFile = Path.ChangeExtension(shpFilePath, ".shx");
+            string dbfFile = Path.ChangeExtension(shpFilePath, ".dbf");
+            string prj = Path.ChangeExtension(shpFilePath, ".prj");
 
             return new Tuple<string, string, string>(shxFile, dbfFile, prj);
         }
@@ -237,5 +235,27 @@ namespace CoreSpatial.Utility
             }
             return featureType;
         }
+
+        /// <summary>
+        /// 删除shapefile
+        /// </summary>
+        /// <param name="shpPath"></param>
+        internal static void DeleteShp(string shpPath)
+        {
+            var (shxPath, dbfPath, prjPath) = GetSubFileName(shpPath);
+            var fileList = new string[]
+            {
+                shpPath,shxPath,dbfPath,prjPath
+            };
+
+            foreach (var file in fileList)
+            {
+                if (File.Exists(file))
+                {
+                    File.Delete(file);
+                }
+            }
+        }
+
     }
 }

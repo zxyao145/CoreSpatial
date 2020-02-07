@@ -17,7 +17,7 @@ namespace CoreSpatial.BasicGeometrys
             Points = points;
         }
 
-        public List<GeoPoint> Points { get;private set; }
+        public List<GeoPoint> Points { get; protected set; }
 
         public GeoPoint this[int index] => Points[index];
 
@@ -28,9 +28,11 @@ namespace CoreSpatial.BasicGeometrys
         {
             get
             {
-                if (Points.Count > 1)
+                if (Points.Count > 2)
                 {
-                    return (GeoPoint)Points[0] == (GeoPoint)Points[Points.Count - 1];
+                    var startPoint = Points[0];
+                    var endPoint = Points[Points.Count - 1];
+                    return startPoint == endPoint;
                 }
                 else
                 {

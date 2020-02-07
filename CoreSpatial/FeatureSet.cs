@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using CoreSpatial.CrsNs;
 using CoreSpatial.ShapeFile;
 using CoreSpatial.Utility;
 
@@ -15,6 +16,7 @@ namespace CoreSpatial
         public FeatureSet(FeatureType featureType)
         {
             FeatureType = featureType;
+            Features = new FeatureList(this);
         }
 
         /// <summary>
@@ -36,6 +38,15 @@ namespace CoreSpatial
             return fs;
         }
 
+        /// <summary>
+        /// 通过文件流打开shapefile
+        /// </summary>
+        /// <param name="shpFileStream">.shp文件流</param>
+        /// <param name="shxFileStream">.shx文件流</param>
+        /// <param name="dbfFileStream">.dbf文件流</param>
+        /// <param name="prjFileStream">.prj文件流</param>
+        /// <param name="encoding">编码方式，默认采用GB2312</param>
+        /// <returns></returns>
         public static FeatureSet Open(FileStream shpFileStream, FileStream shxFileStream,
             FileStream dbfFileStream, FileStream prjFileStream = null, Encoding encoding = null)
         {
@@ -73,12 +84,37 @@ namespace CoreSpatial
         /// <summary>
         /// 坐标系
         /// </summary>
-        public Crs.Crs Crs { get; set; }
-        
+        public Crs Crs { get; set; }
+
         /// <summary>
         /// 范围
         /// </summary>
-        public IEnvelope Envelope { get; set; }
+        public IEnvelope Envelope
+        {
+            get
+            {
+                if (Features.Count > 0)
+                {
+                    var envelope = Features[0].Geometry.BasicGeometry.Envelope;
+
+                    bool firstFlag = true;
+                    foreach (var feature in Features)
+                    {
+                        if (firstFlag)
+                        {
+                            firstFlag = false;
+                            continue;
+                        }
+                        //else
+                        envelope.Update(feature.Geometry.BasicGeometry.Envelope);
+                    }
+
+                    return envelope;
+                }
+
+                return null;
+            }
+        }
 
         /// <summary>
         /// 属性表
@@ -93,7 +129,7 @@ namespace CoreSpatial
         /// <summary>
         /// 所有要素
         /// </summary>
-        public IFeatureList Features { get; set; }
+        public IFeatureList Features { get; }
 
         #endregion
 

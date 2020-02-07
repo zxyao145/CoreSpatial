@@ -4,9 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyVersion>0.2.0.0</AssemblyVersion>
     <FileVersion>0.2.0.0</FileVersion>
-    <Version>0.2.1</Version>
+    <Version>0.2.2</Version>
     <PackageId>CoreSpatial</PackageId>
     <Authors>zxyao</Authors>
+    <PackageTags>shapefile;gis</PackageTags>
     <Company></Company>
     <RepositoryUrl>https://github.com/zxyao145/CoreSpatial</RepositoryUrl>
     <Description>

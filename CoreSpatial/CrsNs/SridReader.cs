@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ProjNet.CoordinateSystems;
 using ProjNet.IO.CoordinateSystems;
 
-namespace CoreSpatial.Crs
+namespace CoreSpatial.CrsNs
 {
     public class SridReader
     {

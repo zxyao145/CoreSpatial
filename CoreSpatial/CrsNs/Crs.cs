@@ -1,7 +1,7 @@
 ﻿using ProjNet.CoordinateSystems;
 using ProjNet.IO.CoordinateSystems;
 
-namespace CoreSpatial.Crs
+namespace CoreSpatial.CrsNs
 {
     /// <summary>
     /// 坐标系

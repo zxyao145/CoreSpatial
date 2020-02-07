@@ -54,7 +54,7 @@ namespace CoreSpatial.ShapeFile
                     .GetBytes((int)GeometryType.PolyLine)
                 );
             }
-            else if (geometryType == GeometryType.MultiPolyLine)
+            else if (geometryType == GeometryType.MultiPolygon)
             {
                 geometryBytes.AddRange(
                 BitConverter

@@ -17,7 +17,7 @@ using System.Reflection;
     "shapefiles. It supports the reading and writing of projection file .prj (support" +
     " by ProjNet).\r\n    ")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.2.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.2.1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.2.2")]
 [assembly: System.Reflection.AssemblyProductAttribute("CoreSpatial")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CoreSpatial")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.2.0.0")]

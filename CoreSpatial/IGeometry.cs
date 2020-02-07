@@ -5,9 +5,8 @@ namespace CoreSpatial
 {
     public interface IGeometry
     {
-        List<GeoPoint> Points { get; }
+        IEnumerable<Coordinate> Coordinates { get; }
         GeometryType GeometryType { get; }
-
         IBasicGeometry BasicGeometry { get; set; }
     }
 }

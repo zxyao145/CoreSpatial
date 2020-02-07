@@ -2,7 +2,7 @@
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 
-namespace CoreSpatial.Crs
+namespace CoreSpatial.CrsNs
 {
     /// <summary>
     /// 坐标转换器

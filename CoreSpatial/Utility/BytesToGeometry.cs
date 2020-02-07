@@ -23,11 +23,7 @@ namespace CoreSpatial.Utility
                     BitConverter.ToDouble(buffer, 12)
                 );
                 IBasicGeometry basicGeometry = point;
-                IGeometry geometry = new Geometry()
-                {
-                    BasicGeometry = basicGeometry,
-                    Points = new List<GeoPoint>() { point }
-                };
+                IGeometry geometry = new Geometry(basicGeometry);
                 return geometry;
             }
             else
@@ -55,11 +51,7 @@ namespace CoreSpatial.Utility
 
                 IBasicGeometry basicGeometry = new MultiPoint(points);
 
-                IGeometry geometry = new Geometry()
-                {
-                    BasicGeometry = basicGeometry,
-                    Points =  points
-                };
+                IGeometry geometry = new Geometry(basicGeometry);
                 return geometry;
             }
             else
@@ -68,11 +60,15 @@ namespace CoreSpatial.Utility
             }
         }
 
-        public static IGeometry CreatePolyline(byte[] buffer)
+        public static IGeometry CreatePolyLine(byte[] buffer)
         {
             if (buffer.Length >= 60)
             {
-                return GetMultipointParts<MultiPolyLine>(buffer);
+                var lines = GetMultiPolyLineParts(buffer);
+
+                IBasicGeometry polygon = new MultiPolyLine(lines);
+                IGeometry geometry = new Geometry(polygon);
+                return geometry;
             }
             else
             {
@@ -84,7 +80,11 @@ namespace CoreSpatial.Utility
         {
             if (buffer.Length >= 60)
             {
-                return GetMultipointParts<Polygon>(buffer);
+                var lines = GetMultiPolyLineParts(buffer);
+
+                IBasicGeometry polygon = new Polygon(lines);
+                IGeometry geometry = new Geometry(polygon);
+                return geometry;
             }
             else
             {
@@ -98,11 +98,9 @@ namespace CoreSpatial.Utility
         /// <summary>
         /// 解析多点要素
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="recordContents"></param>
         /// <returns></returns>
-        private static IGeometry GetMultipointParts<T>(byte[] recordContents) 
-            where T:MultiPolyLine,new()
+        private static List<PolyLine> GetMultiPolyLineParts(byte[] recordContents) 
         {
             //获取几何分了几部分，以及所有坐标点的数量
             PolyRecordFields recordNums = new PolyRecordFields(recordContents);
@@ -131,22 +129,9 @@ namespace CoreSpatial.Utility
                 multiparts.Add(multiPoint);
             }
 
-            IBasicGeometry polygon = new T()
-            {
-                PolyLines = multiparts
-            };
-
-            Type t = typeof(T);
-            GeometryType geometryType = t == typeof(Polygon) ? GeometryType.Polygon : (partsNum == 1 ? GeometryType.PolyLine : GeometryType.MultiPolyLine);
-
-            IGeometry geometry = new Geometry()
-            {
-                BasicGeometry = polygon,
-                Points = points
-            };
-            return geometry;
+            return multiparts;
         }
-        
+
         /// <summary>
         /// 解析所有的坐标点
         /// </summary>
@@ -256,8 +241,16 @@ namespace CoreSpatial.Utility
             }
             else
             {
-                var line = (PolyLine) geometry;
                 var bytes = new List<byte>();
+                var line = (PolyLine)geometry;
+
+                MultiGeometryPreHandle(bytes,
+                    line.Envelope,
+                    1,
+                    line.PointsNum
+                );
+                //Index to the First Point in Part
+                bytes.AddRange(BitConverter.GetBytes(0));
                 foreach (var point in line.Points)
                 {
                     bytes.AddRange(BitConverter.GetBytes(point.X));
@@ -265,6 +258,18 @@ namespace CoreSpatial.Utility
                 }
                 return bytes;
             }
+        }
+
+        private static IEnumerable<byte> GeOneLineBytes(IBasicGeometry geometry)
+        {
+            var line = (PolyLine)geometry;
+            var bytes = new List<byte>();
+            foreach (var point in line.Points)
+            {
+                bytes.AddRange(BitConverter.GetBytes(point.X));
+                bytes.AddRange(BitConverter.GetBytes(point.Y));
+            }
+            return bytes;
         }
 
         /// <summary>
@@ -275,24 +280,37 @@ namespace CoreSpatial.Utility
         public static IEnumerable<byte> GetMultiPolyLineBytes(IBasicGeometry geometry)
         {
             var bytes = new List<byte>();
-            var multiPolyLine = (MultiPolyLine)geometry;
-
+            
             MultiGeometryPreHandle(bytes,
-                multiPolyLine.Envelope,
-                multiPolyLine.PartsNum,
-                multiPolyLine.PointsNum
+                geometry.Envelope,
+                geometry.PartsNum,
+                geometry.PointsNum
                 );
 
             var firstPtIndexOfEveryPart =  new List<int>();
             var curPtIndexOfAllPoints = 0;
 
             var allPointsBytes = new List<byte>();
-            foreach (var polyLine in multiPolyLine.PolyLines)
+
+            IEnumerable<PolyLine> polyLines = new List<PolyLine>();
+
+            if (geometry.GetType().Name == "MultiPolyLine")
+            {
+                var multiPolyLine = (MultiPolyLine)geometry;
+                polyLines = multiPolyLine.PolyLines;
+            }
+            else if (geometry.GetType().Name == "Polygon")
+            {
+                var multiPolyLine = (Polygon)geometry;
+                polyLines = multiPolyLine.PolyLines;
+            }
+
+            foreach (var polyLine in polyLines)
             {
                 firstPtIndexOfEveryPart.Add(curPtIndexOfAllPoints);
                 curPtIndexOfAllPoints += polyLine.PointsNum;
 
-                allPointsBytes.AddRange(GetPolyLineBytes(polyLine));
+                allPointsBytes.AddRange(GeOneLineBytes(polyLine));
             }
 
             foreach (var i in firstPtIndexOfEveryPart)
@@ -311,7 +329,16 @@ namespace CoreSpatial.Utility
         /// <returns></returns>
         public static IEnumerable<byte> GetPolygonBytes(IBasicGeometry geometry)
         {
-            return GetMultiPolyLineBytes(geometry);
+            var polygon = (Polygon) geometry;
+
+            foreach (var polygonPolyLine in polygon.PolyLines)
+            {
+                if (!polygonPolyLine.IsLineRing)
+                {
+                    polygonPolyLine.Points.Add(polygonPolyLine.Points[0]);
+                }
+            }
+            return GetMultiPolyLineBytes(polygon);
         }
 
         /// <summary>

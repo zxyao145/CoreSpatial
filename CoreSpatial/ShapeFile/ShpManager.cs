@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using CoreSpatial.CrsNs;
 using CoreSpatial.Dbf;
 using CoreSpatial.Utility;
 
@@ -39,7 +40,7 @@ namespace CoreSpatial.ShapeFile
                     prjWkt = sr.ReadToEnd();
                 }
 
-                var proj = Crs.Crs.CreateFromWkt(prjWkt);
+                var proj = Crs.CreateFromWkt(prjWkt);
                 fs.Crs = proj;
             }
           
@@ -75,7 +76,7 @@ namespace CoreSpatial.ShapeFile
                     prjWkt = sr.ReadToEnd();
                 }
 
-                var proj = Crs.Crs.CreateFromWkt(prjWkt);
+                var proj = Crs.CreateFromWkt(prjWkt);
                 fs.Crs = proj;
             }
             return fs;
@@ -109,7 +110,7 @@ namespace CoreSpatial.ShapeFile
                         geometry = BytesToGeometry.CreateMultipoint(spatialBytes);
                         break;
                     case GeometryType.PolyLine:
-                        geometry = BytesToGeometry.CreatePolyline(spatialBytes);
+                        geometry = BytesToGeometry.CreatePolyLine(spatialBytes);
                         break;
                     case GeometryType.Polygon:
                         geometry = BytesToGeometry.CreatePolygon(spatialBytes);
@@ -118,19 +119,17 @@ namespace CoreSpatial.ShapeFile
                         geometry = null;
                         break;
                 }
-                IFeature feature = new Feature(fs)
-                {
-                    Geometry = geometry
-                };
+
+                IFeature feature = new Feature(geometry);
                 features.Add(feature);
             }
 
-            fs.Features = features;
+            fs.Features.Set(features);
             fs.AttrTable = dbfReader.DbfTable;
             var header = shpReader.ShpHeader;
-            fs.Envelope = new Envelope(header.XMin, header.YMin,
-                header.XMax, header.YMax,
-                header.ZMin, header.ZMax);
+            //fs.Envelope = new Envelope(header.XMin, header.YMin,
+            //    header.XMax, header.YMax,
+            //    header.ZMin, header.ZMax);
 
             return fs;
         }
@@ -149,6 +148,7 @@ namespace CoreSpatial.ShapeFile
                 Directory.CreateDirectory(dir);
             }
 
+            ShpUtil.DeleteShp(shpFilePath);
             var (shxFilePath, dbfFilePath, prjFilePath) = ShpUtil.GetSubFileName(shpFilePath);
 
             var dbfWriter = new DbfWriter(iFeatureSet.AttrTable,

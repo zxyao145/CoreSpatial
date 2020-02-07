@@ -7,11 +7,6 @@ namespace CoreSpatial
 {
     public class Feature: IFeature
     {
-        public Feature(IFeatureSet parentFeatureSet)
-        {
-            ParentFeatureSet = parentFeatureSet;
-        }
-
         public Feature(IGeometry geometry)
         {
             Geometry = geometry;
@@ -40,6 +35,6 @@ namespace CoreSpatial
         /// <summary>
         /// 当前要素所属的要素集
         /// </summary>
-        public IFeatureSet ParentFeatureSet { get; }
+        public IFeatureSet ParentFeatureSet { get; internal set; }
     }
 }

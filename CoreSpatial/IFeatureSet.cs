@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using CoreSpatial.CrsNs;
 
 namespace CoreSpatial
 {
@@ -20,17 +21,17 @@ namespace CoreSpatial
         /// <summary>
         /// 所有要素
         /// </summary>
-        IFeatureList Features { get; set; }
+        IFeatureList Features { get; }
 
         /// <summary>
         /// 坐标系
         /// </summary>
-        Crs.Crs Crs { get; set; }
+        Crs Crs { get; set; }
 
         /// <summary>
         /// 范围
         /// </summary>
-        IEnvelope Envelope { get; set; }
+        IEnvelope Envelope { get; }
 
         /// <summary>
         /// 保存FeatureSet到硬盘

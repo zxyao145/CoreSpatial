@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "CoreSpatial/0.1.2": {
+      "CoreSpatial/0.2.2": {
         "dependencies": {
           "ProjNET": "2.0.0",
           "System.Text.Encoding.CodePages": "4.7.0"
@@ -38,7 +38,7 @@
     }
   },
   "libraries": {
-    "CoreSpatial/0.1.2": {
+    "CoreSpatial/0.2.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
