@@ -312,7 +312,15 @@ CoreSpatial参考于DotSpatial，部分用法类似，详见 CoreSpatial.Test。
 ```c#
 fs.ToGeoJSON();
 ```
-使用方法见 CoreSpatial.Converter.Test，可在http://geojson.io/进行验证
+
+
+转为KML/KMZ（需要先引用 **CoreSpatial.Converter**）：
+```c#
+fs.ToKML(kmlName);
+fs.ToKMZ(kmlName, KmzSavePath);
+```
+
+使用方法见 CoreSpatial.Converter.Test，可在http://geojson.io/校验GeoJSON。
 
 
 ### 注意事项

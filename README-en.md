@@ -311,7 +311,14 @@ Convert to GeoJSON (You need to add reference **CoreSpatial.Converter** first):
 ```c#
 fs.ToGeoJSON();
 ```
-See CoreSpatial.Converter.Test for usage, which can be verified at http://geojson.io/.
+
+Convert to KML/KMZ (You need to add reference **CoreSpatial.Converter** first):
+```c#
+fs.ToKML(kmlName);
+fs.ToKMZ(kmlName, KmzSavePath);
+```
+
+See CoreSpatial.Converter.Test for usage, Geojson can be verified at http://geojson.io/.
 
 
 ### Attention
