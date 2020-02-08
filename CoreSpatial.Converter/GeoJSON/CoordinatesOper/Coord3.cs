@@ -28,10 +28,7 @@ namespace CoreSpatial.Converter.GeoJSON.CoordinatesOper
                     var oneline = muiltLineString[i];
                     if (oneline != null)
                     {
-                        IFeature ife = new Feature(new Geometry()
-                        {
-                            BasicGeometry = (IBasicGeometry)oneline,
-                        });
+                        IFeature ife = new Feature(new Geometry(oneline));
                         coordinates.Add(base.GetCoords(ife));
                     }
                 }
@@ -69,10 +66,7 @@ namespace CoreSpatial.Converter.GeoJSON.CoordinatesOper
                 coordinates = new List<List<List<double>>>();
                 foreach (var polyLine in lines)
                 {
-                    var coords = base.GetClosedCoords(new Feature(new Geometry()
-                    {
-                        BasicGeometry = polyLine
-                    }));
+                    var coords = base.GetClosedCoords(new Feature(new Geometry(polyLine)));
                     coordinates.Add(coords);
                 }
             }

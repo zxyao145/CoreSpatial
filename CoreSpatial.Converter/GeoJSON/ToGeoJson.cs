@@ -7,9 +7,9 @@ namespace CoreSpatial.Converter.GeoJSON
     /// <summary>
     /// 将shapefile转成GeoJSON的具体类
     /// </summary>
-    internal class ToGeoJson
+    internal class GeoJSONBuilder
     {
-        internal string GetGeoJson(IFeatureSet fs, bool prettyPrint = false)
+        internal static string Build(IFeatureSet fs, bool prettyPrint = false)
         {
             if (fs.Features.Count==0)
             {
