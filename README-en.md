@@ -326,6 +326,7 @@ See CoreSpatial.Converter.Test for usage, Geojson can be verified at http://geoj
 
 ### Reference 
 [DotSpatial](https://github.com/DotSpatial/DotSpatial "DotSpatial")
+
 [NetTopologySuite.IO.ShapeFile](https://github.com/NetTopologySuite/NetTopologySuite.IO.ShapeFile "NetTopologySuite.IO.ShapeFile")
 
 
