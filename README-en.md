@@ -324,6 +324,11 @@ See CoreSpatial.Converter.Test for usage, Geojson can be verified at http://geoj
 ### Attention
 + Cannot read SHP file of M value and Z value
 
+### Reference 
+[DotSpatial](https://github.com/DotSpatial/DotSpatial "DotSpatial")
+[NetTopologySuite.IO.ShapeFile](https://github.com/NetTopologySuite/NetTopologySuite.IO.ShapeFile "NetTopologySuite.IO.ShapeFile")
+
+
 ### Developer
 zxyao145
 

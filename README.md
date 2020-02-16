@@ -326,6 +326,10 @@ fs.ToKMZ(kmlName, KmzSavePath);
 ### 注意事项
 + 暂不能读取M值、Z值shp文件
 
+### 参考 
+[DotSpatial](https://github.com/DotSpatial/DotSpatial "DotSpatial")
+[NetTopologySuite.IO.ShapeFile](https://github.com/NetTopologySuite/NetTopologySuite.IO.ShapeFile "NetTopologySuite.IO.ShapeFile")
+
 
 ### 开发者
 zxyao145
