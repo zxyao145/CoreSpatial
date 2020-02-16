@@ -23,17 +23,10 @@ namespace CoreSpatial
         /// 打开一个shp文件
         /// </summary>
         /// <param name="shpPath">.shp文件的路径</param>
-        /// <param name="encoding">编码方式，默认采用GB2312</param>
         /// <returns></returns>
-        public static FeatureSet Open(string shpPath, Encoding encoding = null)
+        public static FeatureSet Open(string shpPath)
         {
-            if (encoding == null)
-            {
-                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                encoding = Encoding.GetEncoding("GB2312");
-            }
-
-            var fs = ShpManager.CreateFeatureSet(shpPath, encoding);
+            var fs = ShpManager.CreateFeatureSet(shpPath);
             fs._shpFilePath = shpPath;
             return fs;
         }
@@ -45,17 +38,11 @@ namespace CoreSpatial
         /// <param name="shxFileStream">.shx文件流</param>
         /// <param name="dbfFileStream">.dbf文件流</param>
         /// <param name="prjFileStream">.prj文件流</param>
-        /// <param name="encoding">编码方式，默认采用GB2312</param>
         /// <returns></returns>
         public static FeatureSet Open(FileStream shpFileStream, FileStream shxFileStream,
-            FileStream dbfFileStream, FileStream prjFileStream = null, Encoding encoding = null)
+            FileStream dbfFileStream, FileStream prjFileStream = null)
         {
-            if (encoding == null)
-            {
-                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                encoding = Encoding.GetEncoding("GB2312");
-            }
-            var fs = ShpManager.CreateFeatureSet(shpFileStream, shxFileStream, dbfFileStream, encoding, prjFileStream);
+            var fs = ShpManager.CreateFeatureSet(shpFileStream, shxFileStream, dbfFileStream, prjFileStream);
             fs._shpFilePath = null;
             return fs;
         }

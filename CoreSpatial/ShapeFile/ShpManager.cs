@@ -16,16 +16,15 @@ namespace CoreSpatial.ShapeFile
         /// 从shapefile生成FeatureSet
         /// </summary>
         /// <param name="shpFilePath"></param>
-        /// <param name="encoding"></param>
         /// <returns></returns>
-        public static FeatureSet CreateFeatureSet(string shpFilePath, Encoding encoding)
+        public static FeatureSet CreateFeatureSet(string shpFilePath)
         {
             if (!ShpUtil.VerificationShp(shpFilePath, out var subFiles))
             {
                 throw new IOException("该shapefile文件不存在或者主文件缺失！");
             }
             //else
-            var dbfReader = new DbfReader(subFiles.Item2, encoding);
+            var dbfReader = new DbfReader(subFiles.Item2);
             var shxIndexs = new ShxReader().ReadShx(subFiles.Item1);
             var recordNum = shxIndexs.Count;
             var shpReader = new ShpReader(shpFilePath, shxIndexs);
@@ -53,15 +52,13 @@ namespace CoreSpatial.ShapeFile
         /// <param name="shpFileStream"></param>
         /// <param name="shxFileStream"></param>
         /// <param name="dbfFileStream"></param>
-        /// <param name="encoding"></param>
         /// <param name="prjFileStream"></param>
         /// <returns></returns>
         public static FeatureSet CreateFeatureSet
             (FileStream shpFileStream, FileStream shxFileStream, 
-            FileStream dbfFileStream,Encoding encoding, FileStream prjFileStream =null)
+            FileStream dbfFileStream, FileStream prjFileStream =null)
         {
-            
-            var dbfReader = new DbfReader(dbfFileStream, encoding);
+            var dbfReader = new DbfReader(dbfFileStream);
             var shxIndexs = new ShxReader().ReadShx(shxFileStream);
             var recordNum = shxIndexs.Count;
             var shpReader = new ShpReader(shpFileStream, shxIndexs);
@@ -71,7 +68,7 @@ namespace CoreSpatial.ShapeFile
             if (prjFileStream != null)
             {
                 string prjWkt = "";
-                using (var sr = new StreamReader(prjFileStream, Encoding.UTF8))
+                using (var sr = new StreamReader(prjFileStream, dbfReader.Encoding))
                 {
                     prjWkt = sr.ReadToEnd();
                 }
@@ -152,8 +149,7 @@ namespace CoreSpatial.ShapeFile
             var (shxFilePath, dbfFilePath, prjFilePath) = ShpUtil.GetSubFileName(shpFilePath);
 
             var dbfWriter = new DbfWriter(iFeatureSet.AttrTable,
-                dbfFilePath
-                , Encoding.GetEncoding("GB2312"));
+                dbfFilePath, Encoding.Default);
             dbfWriter.Write();
 
             var featureSet = (FeatureSet)iFeatureSet;

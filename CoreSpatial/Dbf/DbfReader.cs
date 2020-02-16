@@ -10,7 +10,9 @@ namespace CoreSpatial.Dbf
     {
         private FileStream _readStream;
         private BinaryReader _reader;
-        private Encoding _encoding;
+
+        public Encoding Encoding { get; private set; }
+
         private DbfHeader _header;
         private DataTable _dbfTable;
         private int _curRowIndex = 0;
@@ -22,8 +24,7 @@ namespace CoreSpatial.Dbf
         /// 构造函数
         /// </summary>
         /// <param name="dbfFilePath">dbf文件路径</param>
-        /// <param name="encoding">可空，默认为ASCII编码</param>
-        public DbfReader(string dbfFilePath, Encoding encoding = null)
+        public DbfReader(string dbfFilePath)
         {
             if (!File.Exists(dbfFilePath))
             {
@@ -31,24 +32,22 @@ namespace CoreSpatial.Dbf
             }
 
             var fs = new FileStream(dbfFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-            Init(fs, encoding);
+            Init(fs);
         }
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="dbfFileStream">dbf FileStream</param>
-        /// <param name="encoding"></param>
-        public DbfReader(FileStream dbfFileStream, Encoding encoding = null)
+        public DbfReader(FileStream dbfFileStream)
         {
-            Init(dbfFileStream, encoding);
+            Init(dbfFileStream);
         }
 
-        private void Init(FileStream dbfFileStream, Encoding encoding = null)
+        private void Init(FileStream dbfFileStream)
         {
             _readStream = dbfFileStream;
-            _encoding = encoding ?? Encoding.ASCII;
-            _reader = new BinaryReader(_readStream, _encoding);
+            _reader = new BinaryReader(_readStream);
             ReadHeader();
         }
 
@@ -64,7 +63,8 @@ namespace CoreSpatial.Dbf
             var headerBytes = new  byte[hearderLength];
             _reader.BaseStream.Seek(0, SeekOrigin.Begin);
             _reader.Read(headerBytes);
-            _header = new DbfHeader(headerBytes, _encoding);
+            _header = new DbfHeader(headerBytes);
+            Encoding = _header.Encoding;
         }
 
         #region 读取文件的所有记录信息
@@ -164,7 +164,7 @@ namespace CoreSpatial.Dbf
                         //(Array sourceArray, int sourceIndex, Array destinationArray, int destinationIndex, int length)
                         Array.Copy(row, fieldStartIndex, buffer, 0, field.FieldLength);
                         fieldStartIndex += field.FieldLength;
-                        string text = (_encoding.GetString(buffer) ?? String.Empty).Trim().Replace("\0", "");
+                        string text = (Encoding.GetString(buffer) ?? String.Empty).Trim().Replace("\0", "");
 
                         var valueObj = GetValueObj(field, text, buffer);
                         dtRow[field.FieldName] = valueObj;

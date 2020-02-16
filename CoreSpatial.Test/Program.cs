@@ -16,8 +16,8 @@ namespace CoreSpatial.Test
         static void Main(string[] args)
         {
             ReadTest();
-            SaveTest();
-            CreateNew();
+            //SaveTest();
+            //CreateNew();
 
             Console.WriteLine();
             Console.WriteLine("Finish!");

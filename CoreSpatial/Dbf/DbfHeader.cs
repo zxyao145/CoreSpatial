@@ -6,7 +6,7 @@ namespace CoreSpatial.Dbf
 {
     internal class DbfHeader
     {
-        private Encoding _encoding;
+        public Encoding Encoding { get; private set; }
 
         /// <summary>
         /// 当前版本
@@ -38,6 +38,10 @@ namespace CoreSpatial.Dbf
         /// </summary>
         public short RecordLength { get; private set; }
 
+        /// <summary>
+        /// LangDriverId 29
+        /// </summary>
+        public byte LangDriverId { get; private set; }
 
         public List<DbfFieldInfo> FieldInfos { get; private set; } = new List<DbfFieldInfo>();
 
@@ -55,11 +59,11 @@ namespace CoreSpatial.Dbf
 
                     var fieldInfo = new DbfFieldInfo
                     {
-                        FieldName = _encoding
+                        FieldName = Encoding
                             .GetString(tableHeader, offset, 10)
                             .Replace("\0",""),
                         FieldType = (DbfFieldType)
-                            (_encoding
+                            (Encoding
                                 .GetChars(tableHeader, offset + 11, 1)[0]),
                         FieldLength = tableHeader[offset + 16],
                         Accuracy = tableHeader[offset + 17]
@@ -69,12 +73,10 @@ namespace CoreSpatial.Dbf
             }
         }
 
-        public DbfHeader(byte[] tableHeader, Encoding encoding)
+        public DbfHeader(byte[] tableHeader)
         {
             if (tableHeader != null && tableHeader.Length >= 32)
             {
-                _encoding = encoding;
-
                 this.Version = (DbfVersion)tableHeader[0];
                 //string year = tableHeader[1].ToString();
                 //string month = tableHeader[2].ToString("00");
@@ -86,6 +88,8 @@ namespace CoreSpatial.Dbf
                 this.RecordCount = BitConverter.ToInt32(tableHeader, 4);
                 this.HeaderLength = BitConverter.ToInt16(tableHeader, 8);
                 this.RecordLength = BitConverter.ToInt16(tableHeader, 10);
+                this.LangDriverId = tableHeader[29];
+                this.Encoding = DbfEncodingUtil.GetEncoding(this.LangDriverId);
                 this.GetFieldsFromHeader(tableHeader);
             }
         }
