@@ -8,7 +8,7 @@ namespace CoreSpatial.Converter.Test
         static void Main(string[] args)
         {
             //you can see geojson result in http://geojson.io/
-            //GeoJSONTest();
+            GeoJSONTest();
             KmlAndKmzTest();
             Console.WriteLine("Finished!");
             Console.Read();

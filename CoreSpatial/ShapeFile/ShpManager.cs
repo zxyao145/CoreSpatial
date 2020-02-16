@@ -149,7 +149,7 @@ namespace CoreSpatial.ShapeFile
             var (shxFilePath, dbfFilePath, prjFilePath) = ShpUtil.GetSubFileName(shpFilePath);
 
             var dbfWriter = new DbfWriter(iFeatureSet.AttrTable,
-                dbfFilePath, Encoding.Default);
+                dbfFilePath, DbfEncodingUtil.DefaultEncoding);
             dbfWriter.Write();
 
             var featureSet = (FeatureSet)iFeatureSet;

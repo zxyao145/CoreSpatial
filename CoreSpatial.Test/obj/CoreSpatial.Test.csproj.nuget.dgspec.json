@@ -25,9 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.cdn.azure.cn/v3/index.json": {},
-          "https://nuget.cnblogs.com/v3/index.json": {}
+          "https://nuget.cdn.azure.cn/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -66,7 +64,7 @@
       }
     },
     "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {
-      "version": "0.2.2",
+      "version": "0.2.5",
       "restore": {
         "projectUniqueName": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
         "projectName": "CoreSpatial",
@@ -86,9 +84,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.cdn.azure.cn/v3/index.json": {},
-          "https://nuget.cnblogs.com/v3/index.json": {}
+          "https://nuget.cdn.azure.cn/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {

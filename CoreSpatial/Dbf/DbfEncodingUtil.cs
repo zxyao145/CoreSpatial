@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace CoreSpatial.Dbf
 {
@@ -69,6 +70,12 @@ namespace CoreSpatial.Dbf
                 {0xCB, 1253},
                 {0xCC, 1257}
             };
+
+
+        public static Encoding DefaultEncoding
+            => Thread.CurrentThread.CurrentCulture.Name != "zh-CN"
+                ? CodePagesEncodingProvider.Instance.GetEncoding(1512)
+                : CodePagesEncodingProvider.Instance.GetEncoding(936);
 
         private static readonly Dictionary<int, byte> EncodingToLangId;
 

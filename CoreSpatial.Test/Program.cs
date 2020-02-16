@@ -16,8 +16,8 @@ namespace CoreSpatial.Test
         static void Main(string[] args)
         {
             ReadTest();
-            //SaveTest();
-            //CreateNew();
+            SaveTest();
+            CreateNew();
 
             Console.WriteLine();
             Console.WriteLine("Finish!");
@@ -286,9 +286,6 @@ namespace CoreSpatial.Test
 
                 fs.Save("../createNew/polygon.shp");
             }
-
-            //for using GB2312
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             CreatePoint();
             CreateMultiPoint();

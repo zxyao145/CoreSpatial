@@ -60,7 +60,7 @@
           }
         }
       },
-      "CoreSpatial/0.2.2": {
+      "CoreSpatial/0.2.5": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -215,7 +215,7 @@
         "version.txt"
       ]
     },
-    "CoreSpatial/0.2.2": {
+    "CoreSpatial/0.2.5": {
       "type": "project",
       "path": "../CoreSpatial/CoreSpatial.csproj",
       "msbuildProject": "../CoreSpatial/CoreSpatial.csproj"
@@ -223,7 +223,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "CoreSpatial >= 0.2.2"
+      "CoreSpatial >= 0.2.5"
     ]
   },
   "packageFolders": {
@@ -251,9 +251,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.cdn.azure.cn/v3/index.json": {},
-        "https://nuget.cnblogs.com/v3/index.json": {}
+        "https://nuget.cdn.azure.cn/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
