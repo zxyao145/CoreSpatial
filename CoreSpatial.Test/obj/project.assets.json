@@ -60,9 +60,9 @@
           }
         }
       },
-      "CoreSpatial/0.2.5": {
+      "CoreSpatial/0.3.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
           "ProjNet": "2.0.0",
           "System.Text.Encoding.CodePages": "4.7.0"
@@ -215,7 +215,7 @@
         "version.txt"
       ]
     },
-    "CoreSpatial/0.2.5": {
+    "CoreSpatial/0.3.0": {
       "type": "project",
       "path": "../CoreSpatial/CoreSpatial.csproj",
       "msbuildProject": "../CoreSpatial/CoreSpatial.csproj"
@@ -223,7 +223,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "CoreSpatial >= 0.2.5"
+      "CoreSpatial >= 0.3.0"
     ]
   },
   "packageFolders": {
@@ -233,11 +233,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial.Test\\CoreSpatial.Test.csproj",
+      "projectUniqueName": "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial.Test\\CoreSpatial.Test.csproj",
       "projectName": "CoreSpatial.Test",
-      "projectPath": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial.Test\\CoreSpatial.Test.csproj",
+      "projectPath": "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial.Test\\CoreSpatial.Test.csproj",
       "packagesPath": "C:\\Users\\zhang\\.nuget\\packages\\",
-      "outputPath": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial.Test\\obj\\",
+      "outputPath": "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -251,13 +251,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\bin\\Release": {},
+        "https://api.nuget.org/v3/index.json": {},
         "https://nuget.cdn.azure.cn/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {
-              "projectPath": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj"
+            "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {
+              "projectPath": "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj"
             }
           }
         }
@@ -285,7 +287,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

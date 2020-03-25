@@ -23,7 +23,7 @@ namespace CoreSpatial.ShapeFile
             return ReadShx(readStream);
         }
 
-        public List<ShxRecord> ReadShx(FileStream shxFileStream)
+        public List<ShxRecord> ReadShx(Stream shxFileStream)
         {
             if (shxFileStream.CanRead)
             {
@@ -43,7 +43,7 @@ namespace CoreSpatial.ShapeFile
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>
-        private static List<ShxRecord> GetAllIndexRecords(FileStream stream)
+        private static List<ShxRecord> GetAllIndexRecords(Stream stream)
         {
             List<ShxRecord> records = new List<ShxRecord>();
             try

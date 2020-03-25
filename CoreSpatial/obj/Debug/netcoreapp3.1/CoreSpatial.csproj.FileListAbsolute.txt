@@ -6,3 +6,12 @@ C:\Users\zhang\source\repos\VGIS\VGis.GeoData\CoreSpatial\CoreSpatial\obj\Debug\
 C:\Users\zhang\source\repos\VGIS\VGis.GeoData\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp3.1\CoreSpatial.AssemblyInfo.cs
 C:\Users\zhang\source\repos\VGIS\VGis.GeoData\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp3.1\CoreSpatial.dll
 C:\Users\zhang\source\repos\VGIS\VGis.GeoData\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp3.1\CoreSpatial.pdb
+D:\Coding\repos\CoreSpatial\CoreSpatial\bin\Debug\netcoreapp3.1\CoreSpatial.deps.json
+D:\Coding\repos\CoreSpatial\CoreSpatial\bin\Debug\netcoreapp3.1\CoreSpatial.dll
+D:\Coding\repos\CoreSpatial\CoreSpatial\bin\Debug\netcoreapp3.1\CoreSpatial.pdb
+D:\Coding\repos\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp3.1\CoreSpatial.csprojAssemblyReference.cache
+D:\Coding\repos\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp3.1\CoreSpatial.csproj.CoreCompileInputs.cache
+D:\Coding\repos\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp3.1\CoreSpatial.AssemblyInfoInputs.cache
+D:\Coding\repos\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp3.1\CoreSpatial.AssemblyInfo.cs
+D:\Coding\repos\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp3.1\CoreSpatial.dll
+D:\Coding\repos\CoreSpatial\CoreSpatial\obj\Debug\netcoreapp3.1\CoreSpatial.pdb

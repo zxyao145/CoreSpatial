@@ -353,3 +353,4 @@ MigrationBackup/
 .ionide/
 
 nugetPush.txt
+azure-pipelines.yml

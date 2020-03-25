@@ -17,7 +17,7 @@ namespace CoreSpatial.ShapeFile
             
         }
 
-        public ShpReader(FileStream shpFileStream, List<ShxRecord> shxRecords)
+        public ShpReader(Stream shpFileStream, List<ShxRecord> shxRecords)
         {
             _shxRecords = shxRecords;
             _readStream = shpFileStream;
@@ -40,7 +40,7 @@ namespace CoreSpatial.ShapeFile
         /// <summary>
         /// shp文件流
         /// </summary>
-        private readonly FileStream _readStream;
+        private readonly Stream _readStream;
 
         /// <summary>
         /// 索引文件的记录内容

@@ -39,10 +39,11 @@ namespace CoreSpatial
         /// <param name="dbfFileStream">.dbf文件流</param>
         /// <param name="prjFileStream">.prj文件流</param>
         /// <returns></returns>
-        public static FeatureSet Open(FileStream shpFileStream, FileStream shxFileStream,
-            FileStream dbfFileStream, FileStream prjFileStream = null)
+        public static FeatureSet Open(Stream shpFileStream, Stream shxFileStream,
+            Stream dbfFileStream, Stream prjFileStream = null)
         {
-            var fs = ShpManager.CreateFeatureSet(shpFileStream, shxFileStream, dbfFileStream, prjFileStream);
+            var fs = ShpManager
+                .CreateFeatureSet(shpFileStream, shxFileStream, dbfFileStream, prjFileStream);
             fs._shpFilePath = null;
             return fs;
         }

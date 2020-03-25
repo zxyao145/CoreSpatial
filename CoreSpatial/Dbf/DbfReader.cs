@@ -8,7 +8,7 @@ namespace CoreSpatial.Dbf
 {
     internal class DbfReader:IDisposable
     {
-        private FileStream _readStream;
+        private Stream _readStream;
         private BinaryReader _reader;
 
         public Encoding Encoding { get; private set; }
@@ -39,12 +39,12 @@ namespace CoreSpatial.Dbf
         /// 构造函数
         /// </summary>
         /// <param name="dbfFileStream">dbf FileStream</param>
-        public DbfReader(FileStream dbfFileStream)
+        public DbfReader(Stream dbfFileStream)
         {
             Init(dbfFileStream);
         }
 
-        private void Init(FileStream dbfFileStream)
+        private void Init(Stream dbfFileStream)
         {
             _readStream = dbfFileStream;
             _reader = new BinaryReader(_readStream);
