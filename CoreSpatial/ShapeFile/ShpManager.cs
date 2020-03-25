@@ -55,8 +55,8 @@ namespace CoreSpatial.ShapeFile
         /// <param name="prjFileStream"></param>
         /// <returns></returns>
         public static FeatureSet CreateFeatureSet
-            (FileStream shpFileStream, FileStream shxFileStream, 
-            FileStream dbfFileStream, FileStream prjFileStream =null)
+            (Stream shpFileStream, Stream shxFileStream,
+            Stream dbfFileStream, Stream prjFileStream =null)
         {
             var dbfReader = new DbfReader(dbfFileStream);
             var shxIndexs = new ShxReader().ReadShx(shxFileStream);

@@ -18,7 +18,7 @@ namespace CoreSpatial.Utility
         /// 文件头的长度，100 byte
         /// </summary>
         public static int HeaderLengthInBytes = 100;
-        public static byte[] ReadBytesFromStream(FileStream readStream, int numBytesRequested)
+        public static byte[] ReadBytesFromStream(Stream readStream, int numBytesRequested)
         {
             byte[] bufferBytes = new byte[numBytesRequested];
             if (readStream != null)
@@ -44,12 +44,16 @@ namespace CoreSpatial.Utility
                 }
                 else
                 {
-                    throw new IOException("不能读取FileStream: " + readStream.Name);
+                    if (readStream is FileStream fs)
+                    {
+                        throw new IOException("不能读取FileStream: " + fs.Name);
+                    }
+                    throw new IOException("不能读取Stream");
                 }
             }
             else
             {
-                throw new NullReferenceException("FileStream为空！");
+                throw new NullReferenceException("Stream为空！");
             }
             return bufferBytes;
         }
@@ -123,7 +127,7 @@ namespace CoreSpatial.Utility
         /// </summary>
         /// <param name="stream">shp文件流或者shx文件的文件流</param>
         /// <returns>根据流返回对应的文件的文件头</returns>
-        internal static ShpOrShxHeader GetHeader(FileStream stream)
+        internal static ShpOrShxHeader GetHeader(Stream stream)
         {
             ShpOrShxHeader shpfileHeader = null;
             try

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {}
+    "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {}
   },
   "projects": {
-    "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {
-      "version": "0.2.5",
+    "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {
+      "version": "0.3.0",
       "restore": {
-        "projectUniqueName": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
+        "projectUniqueName": "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
         "projectName": "CoreSpatial",
-        "projectPath": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
+        "projectPath": "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
         "packagesPath": "C:\\Users\\zhang\\.nuget\\packages\\",
-        "outputPath": "E:\\Git\\GitHub\\CoreSpatial\\CoreSpatial\\obj\\",
+        "outputPath": "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -21,14 +21,16 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netstandard2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\bin\\Release": {},
+          "https://api.nuget.org/v3/index.json": {},
           "https://nuget.cdn.azure.cn/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netstandard2.1": {
             "projectReferences": {}
           }
         },
@@ -39,7 +41,7 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netstandard2.1": {
           "dependencies": {
             "ProjNet": {
               "target": "Package",
@@ -61,11 +63,11 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.NETCore.App": {
+            "NETStandard.Library": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
