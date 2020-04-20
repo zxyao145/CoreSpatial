@@ -49,7 +49,7 @@ namespace CoreSpatial
         }
 
         /// <summary>
-        /// 保存FeatureSet到硬盘
+        /// 保存FeatureSet到硬盘，如果原来存在则先删除
         /// </summary>
         /// <param name="newShpFilePath"></param>
         /// <returns>shapefile在硬盘上的保存目录</returns>

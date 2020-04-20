@@ -258,11 +258,6 @@ namespace CoreSpatial.Dbf
             return new DateTime(Convert.ToInt32(j), Convert.ToInt32(m), Convert.ToInt32(d));
         }
 
-        ~DbfReader()
-        {
-            this.Dispose();
-        }
-
         public void Dispose()
         {
             _readStream.Dispose();

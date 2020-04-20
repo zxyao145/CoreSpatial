@@ -262,12 +262,6 @@ namespace CoreSpatial.Dbf
 
         #endregion
 
-
-        ~DbfWriter()
-        {
-            this.Dispose();
-        }
-
         public void Dispose()
         {
             this._writerStream.Dispose();

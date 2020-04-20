@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 using CoreSpatial.CrsNs;
@@ -24,10 +25,10 @@ namespace CoreSpatial.ShapeFile
                 throw new IOException("该shapefile文件不存在或者主文件缺失！");
             }
             //else
-            var dbfReader = new DbfReader(subFiles.Item2);
+            using var dbfReader = new DbfReader(subFiles.Item2);
             var shxIndexs = new ShxReader().ReadShx(subFiles.Item1);
             var recordNum = shxIndexs.Count;
-            var shpReader = new ShpReader(shpFilePath, shxIndexs);
+            using var shpReader = new ShpReader(shpFilePath, shxIndexs);
 
             var fs = CreateFeatureSet(shpReader, dbfReader, recordNum);
             
@@ -58,10 +59,10 @@ namespace CoreSpatial.ShapeFile
             (Stream shpFileStream, Stream shxFileStream,
             Stream dbfFileStream, Stream prjFileStream =null)
         {
-            var dbfReader = new DbfReader(dbfFileStream);
+            using var dbfReader = new DbfReader(dbfFileStream);
             var shxIndexs = new ShxReader().ReadShx(shxFileStream);
             var recordNum = shxIndexs.Count;
-            var shpReader = new ShpReader(shpFileStream, shxIndexs);
+            using var shpReader = new ShpReader(shpFileStream, shxIndexs);
 
             var fs = CreateFeatureSet(shpReader, dbfReader, recordNum);
 
@@ -142,13 +143,13 @@ namespace CoreSpatial.ShapeFile
             var dir = Path.GetDirectoryName(shpFilePath);
             if (!Directory.Exists(dir))
             {
-                Directory.CreateDirectory(dir);
+                Directory.CreateDirectory(dir ?? throw new InvalidOperationException(nameof(shpFilePath)));
             }
 
             ShpUtil.DeleteShp(shpFilePath);
             var (shxFilePath, dbfFilePath, prjFilePath) = ShpUtil.GetSubFileName(shpFilePath);
 
-            var dbfWriter = new DbfWriter(iFeatureSet.AttrTable,
+            using var dbfWriter = new DbfWriter(iFeatureSet.AttrTable,
                 dbfFilePath, DbfEncodingUtil.DefaultEncoding);
             dbfWriter.Write();
 

@@ -60,7 +60,7 @@
           }
         }
       },
-      "CoreSpatial/0.3.0": {
+      "CoreSpatial/0.3.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -215,7 +215,7 @@
         "version.txt"
       ]
     },
-    "CoreSpatial/0.3.0": {
+    "CoreSpatial/0.3.1": {
       "type": "project",
       "path": "../CoreSpatial/CoreSpatial.csproj",
       "msbuildProject": "../CoreSpatial/CoreSpatial.csproj"
@@ -223,7 +223,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "CoreSpatial >= 0.3.0"
+      "CoreSpatial >= 0.3.1"
     ]
   },
   "packageFolders": {
@@ -251,7 +251,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\bin\\Release": {},
+        "C:\\Users\\zhang\\.nuget\\localPackage": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://nuget.cdn.azure.cn/v3/index.json": {}
       },
@@ -287,7 +287,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

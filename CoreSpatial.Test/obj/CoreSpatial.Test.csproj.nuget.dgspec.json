@@ -25,7 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\bin\\Release": {},
+          "C:\\Users\\zhang\\.nuget\\localPackage": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://nuget.cdn.azure.cn/v3/index.json": {}
         },
@@ -61,12 +61,12 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
     "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {
-      "version": "0.3.0",
+      "version": "0.3.1",
       "restore": {
         "projectUniqueName": "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
         "projectName": "CoreSpatial",
@@ -86,7 +86,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\bin\\Release": {},
+          "C:\\Users\\zhang\\.nuget\\localPackage": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://nuget.cdn.azure.cn/v3/index.json": {}
         },
@@ -128,7 +128,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
