@@ -33,11 +33,16 @@ namespace CoreSpatial.Converter.Extension
         /// <returns></returns>
         internal static Dictionary<string, string> GetPropertieJson(this IFeature feature)
         {
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+
             DataRow dr = feature.DataRow;
+            if (dr == null)
+            {
+                return dict;
+            }
             var cols = dr.Table.Columns;
             var dataArr = dr.ItemArray;
 
-            Dictionary<string, string> dict = new Dictionary<string, string>();
             for (int i = 0; i < cols.Count; i++)
             {
                 string key = cols[i].ColumnName;
