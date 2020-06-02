@@ -15,15 +15,71 @@ namespace CoreSpatial.Test
     {
         static void Main(string[] args)
         {
-            ReadTest();
-            SaveTest();
-            CreateNew();
+            //ReadTest();
+            //SaveTest();
+            //CreateNew();
 
+            SaveByStream();
 
             Console.WriteLine();
             Console.WriteLine("Finish!");
             Console.ReadLine();
         }
+
+        static void SaveByStream()
+        {
+            void CreatePoint()
+            {
+                IFeatureSet fs = new FeatureSet(FeatureType.Point);
+                var point1 = new GeoPoint(133, 30);
+                var point2 = new GeoPoint(133, 32);
+                var point3 = new GeoPoint(134, 30);
+
+                var feature1 = new Feature(new Geometry(point1));
+                var feature2 = new Feature(new Geometry(point2));
+                var feature3 = new Feature(new Geometry(point3));
+
+                fs.Features.Add(feature1);
+                fs.Features.Add(feature2);
+                fs.Features.Add(feature3);
+                fs.Crs = Crs.Wgs84Gcs;
+
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("名称", typeof(string));
+                dataTable.Columns.Add("id", typeof(int));
+                var row1 = dataTable.NewRow();
+                var row2 = dataTable.NewRow();
+                var row3 = dataTable.NewRow();
+
+                row1[0] = "点1";
+                row1[1] = 1;
+
+                row2[0] = "点2";
+                row2[1] = 2;
+
+                row3[0] = "点3";
+                row3[1] = 3;
+
+                dataTable.Rows.Add(row1);
+                dataTable.Rows.Add(row2);
+                dataTable.Rows.Add(row3);
+
+                fs.AttrTable = dataTable;
+
+                var fileBytes = fs.GetShapeFileBytes();
+                using var shpFile = new FileStream("../createNew/point_stream.shp",FileMode.OpenOrCreate,FileAccess.Write,FileShare.Read);
+                using var shxFile = new FileStream("../createNew/point_stream.shx", FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read);
+                using var dbfFile = new FileStream("../createNew/point_stream.dbf", FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read);
+                using var prjFile = new FileStream("../createNew/point_stream.prj", FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read);
+                shpFile.Write(fileBytes.ShpBytes);
+                shxFile.Write(fileBytes.ShxBytes);
+                dbfFile.Write(fileBytes.DbfBytes);
+                prjFile.Write(fileBytes.PrjBytes);
+            }
+
+            CreatePoint();
+        }
+
 
         public static void CreateNew()
         {
