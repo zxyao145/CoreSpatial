@@ -5,7 +5,7 @@
   },
   "projects": {
     "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {
-      "version": "0.3.1",
+      "version": "0.3.1-getfileBytes",
       "restore": {
         "projectUniqueName": "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
         "projectName": "CoreSpatial",
