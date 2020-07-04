@@ -66,6 +66,10 @@ namespace CoreSpatial
             return newShpFilePath;
         }
 
+        public ShapeFileBytes GetShapeFileBytes()
+        {
+            return ShpManager.GetShapeFileStreams(this);
+        }
 
         #region 属性
 

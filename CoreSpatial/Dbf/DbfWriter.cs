@@ -9,22 +9,32 @@ namespace CoreSpatial.Dbf
 {
     internal class DbfWriter : IDisposable
     {
-        private readonly FileStream _writerStream;
+        private readonly Stream _writerStream;
         private readonly Encoding _encoding;
         private readonly DataTable _dataTable;
         private readonly DataColumnCollection _dataColumns;
         private List<DbfFieldInfo> _fieldInfos;
 
-        public DbfWriter(DataTable dataTable, string path, 
+        public Stream Stream => _writerStream;
+
+        public DbfWriter(DataTable dataTable, string path=null, 
             Encoding encoding = null)
         {
-            var ext = Path.GetExtension(path);
-            if (ext != ".dbf")
+            if (string.IsNullOrWhiteSpace(path))
             {
-                throw new Exception("扩展名不是dbf");
+                _writerStream = new MemoryStream();
             }
+            else
+            {
+                var ext = Path.GetExtension(path);
+                if (ext != ".dbf")
+                {
+                    throw new Exception("扩展名不是dbf");
+                }
 
-            _writerStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read);
+                _writerStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read);
+
+            }
             _dataTable = dataTable;
             _dataColumns = _dataTable.Columns;
             _encoding = encoding ?? Encoding.ASCII;
@@ -186,7 +196,7 @@ namespace CoreSpatial.Dbf
 
             //写入文件头
             _writerStream.Write(headerMetaBytes);
-            _writerStream.Flush(true);
+            _writerStream.Flush();
             return (headerMetaBytes.Length, recordLength);
         }
 

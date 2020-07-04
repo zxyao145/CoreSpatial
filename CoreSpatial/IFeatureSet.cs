@@ -39,5 +39,7 @@ namespace CoreSpatial
         /// <param name="newShpFilePath"></param>
         /// <returns>shapefile在硬盘上的保存目录</returns>
         string Save(string newShpFilePath = null);
+
+        ShapeFileBytes GetShapeFileBytes();
     }
 }
