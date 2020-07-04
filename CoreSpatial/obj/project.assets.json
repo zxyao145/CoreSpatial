@@ -91,7 +91,7 @@
       ]
     },
     "System.Buffers/4.4.0": {
-      "sha512": "Ii2bedd4HVzddupdU35n3ygohUPlNn7MDimBOYcwWNce2NizQ1fCSaQJY1Tzv80aMqOGpVcU4wZr/Xe50xcTwg==",
+      "sha512": "AwarXzzoDwX6BgrhjoJsk6tUezZEozOT5Y9QKF94Gl4JK91I4PIIBkBco9068Y9/Dra8Dkbie99kXB8+1BaYKw==",
       "type": "package",
       "path": "system.buffers/4.4.0",
       "files": [
@@ -256,34 +256,33 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\zhang\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\admin\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "0.3.1",
+    "version": "0.3.2",
     "restore": {
-      "projectUniqueName": "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\source\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
       "projectName": "CoreSpatial",
-      "projectPath": "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
-      "packagesPath": "C:\\Users\\zhang\\.nuget\\packages\\",
-      "outputPath": "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\obj\\",
+      "projectPath": "C:\\Users\\admin\\source\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\admin\\source\\repos\\CoreSpatial\\CoreSpatial\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\zhang\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\zhang\\.nuget\\localPackage": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.cdn.azure.cn/v3/index.json": {},
-        "https://nuget.cnblogs.com/v3/index.json": {}
+        "C:\\Users\\admin\\.nuget\\localPackage": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.1": {
@@ -323,7 +322,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

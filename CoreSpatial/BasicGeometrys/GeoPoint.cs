@@ -38,9 +38,12 @@ namespace CoreSpatial.BasicGeometrys
             get => _coordinate.Y;
             set => _coordinate.Y = value;
         }
-
-
-
+        
+        public void SetPoint(double x, double y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
 
         /// <summary>
         /// 坐标对
@@ -124,7 +127,7 @@ namespace CoreSpatial.BasicGeometrys
 
             #endregion
 
-            if ((Math.Abs(geoPoint1.X - geoPoint2.X) < ShpUtil.DValue) && (Math.Abs(geoPoint1.Y - geoPoint2.Y) < ShpUtil.DValue))
+            if ((Math.Abs(geoPoint1.X - geoPoint2.X) < Util.DValue) && (Math.Abs(geoPoint1.Y - geoPoint2.Y) < Util.DValue))
             {
                 return true;
             }
@@ -162,5 +165,10 @@ namespace CoreSpatial.BasicGeometrys
 
         #endregion
 
+
+        public GeoPoint DeepClone()
+        {
+            return new GeoPoint(X, Y);
+        }
     }
 }

@@ -10,11 +10,6 @@ namespace CoreSpatial.Utility
     internal static class ShpUtil
     {
         /// <summary>
-        /// 判断两个double是否相等的差值极限，此用以判断坐标的X、Y值
-        /// </summary>
-        public static double DValue => 1e-8d;
-
-        /// <summary>
         /// 文件头的长度，100 byte
         /// </summary>
         public static int HeaderLengthInBytes = 100;
