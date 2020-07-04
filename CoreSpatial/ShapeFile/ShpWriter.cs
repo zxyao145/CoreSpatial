@@ -9,11 +9,21 @@ namespace CoreSpatial.ShapeFile
 {
     internal class ShpWriter:IDisposable
     {
-        private readonly FileStream _shpWriterStream;
+        private readonly Stream _shpWriterStream;
         private int _fileLength = 100;
-        public  ShpWriter(string shpFilePath)
+
+        public Stream Stream => _shpWriterStream;
+
+        public  ShpWriter(string shpFilePath = null)
         {
-            _shpWriterStream = new FileStream(shpFilePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
+            if (string.IsNullOrWhiteSpace(shpFilePath))
+            {
+                _shpWriterStream = new MemoryStream();
+            }
+            else
+            {
+                _shpWriterStream = new FileStream(shpFilePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
+            }
         }
 
         public void Write(IFeatureSet featureSet)

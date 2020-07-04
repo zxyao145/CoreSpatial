@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using CoreSpatial.CrsNs;
 using CoreSpatial.Dbf;
 using CoreSpatial.Utility;
@@ -179,6 +180,48 @@ namespace CoreSpatial.ShapeFile
                 using var sw = new StreamWriter(fsStream);
                 sw.Write(featureSet.Crs.Wkt);
             }
+        }
+
+        public static ShapeFileBytes GetShapeFileStreams(IFeatureSet iFeatureSet)
+        {
+            using var dbfWriter = new DbfWriter(iFeatureSet.AttrTable,
+                "", DbfEncodingUtil.DefaultEncoding);
+            dbfWriter.Write();
+
+            var featureSet = (FeatureSet)iFeatureSet;
+            var header = featureSet.GetHeader();
+
+            using ShpWriter shpWriter = new ShpWriter();
+            using ShxWriter shxWriter = new ShxWriter();
+            shpWriter.WriterHeader(header);
+            shxWriter.WriterHeader(header);
+
+            int offset = 100;
+
+            foreach (var feature in featureSet.Features)
+            {
+                var contentByteLength = shpWriter.WriterRecord(feature);
+                shxWriter.WriterRecord(offset, contentByteLength);
+
+                offset += contentByteLength;
+            }
+
+            shpWriter.WriteFileLength(); 
+            shxWriter.WriteFileLength();
+
+            var fileBytes = new ShapeFileBytes
+            {
+                DbfBytes = ((MemoryStream) dbfWriter.Stream).ToArray(),
+                ShpBytes = ((MemoryStream) shpWriter.Stream).ToArray(),
+                ShxBytes = ((MemoryStream) shxWriter.Stream).ToArray()
+            };
+            
+            if (featureSet.Crs != null)
+            {
+                var bytes = Encoding.UTF8.GetBytes(featureSet.Crs.Wkt);
+                fileBytes.PrjBytes = bytes;
+            }
+            return fileBytes;
         }
     }
 }

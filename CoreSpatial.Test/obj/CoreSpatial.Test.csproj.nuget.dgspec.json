@@ -65,8 +65,13 @@
         }
       }
     },
+<<<<<<< HEAD
     "C:\\Users\\admin\\source\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {
       "version": "0.3.2",
+=======
+    "D:\\Coding\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj": {
+      "version": "0.3.1-getfileBytes",
+>>>>>>> 8f1b850fb8df21a176426b79432b684b5b55ce12
       "restore": {
         "projectUniqueName": "C:\\Users\\admin\\source\\repos\\CoreSpatial\\CoreSpatial\\CoreSpatial.csproj",
         "projectName": "CoreSpatial",

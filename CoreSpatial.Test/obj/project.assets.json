@@ -60,7 +60,11 @@
           }
         }
       },
+<<<<<<< HEAD
       "CoreSpatial/0.3.2": {
+=======
+      "CoreSpatial/0.3.1-getfileBytes": {
+>>>>>>> 8f1b850fb8df21a176426b79432b684b5b55ce12
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -215,7 +219,11 @@
         "version.txt"
       ]
     },
+<<<<<<< HEAD
     "CoreSpatial/0.3.2": {
+=======
+    "CoreSpatial/0.3.1-getfileBytes": {
+>>>>>>> 8f1b850fb8df21a176426b79432b684b5b55ce12
       "type": "project",
       "path": "../CoreSpatial/CoreSpatial.csproj",
       "msbuildProject": "../CoreSpatial/CoreSpatial.csproj"
@@ -223,7 +231,11 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+<<<<<<< HEAD
       "CoreSpatial >= 0.3.2"
+=======
+      "CoreSpatial >= 0.3.1-getfileBytes"
+>>>>>>> 8f1b850fb8df21a176426b79432b684b5b55ce12
     ]
   },
   "packageFolders": {
