@@ -100,7 +100,16 @@ namespace CoreSpatial.Converter.GeoJSON.CoordinatesOper
                             };
                             oneLine.Add(coord);
                         }
-
+                        else if (xy.Length == 3)
+                        {
+                            Coordinate coord = new Coordinate()
+                            {
+                                X = Convert.ToDouble(xy[0]),
+                                Y = Convert.ToDouble(xy[1]),
+                                Z = Convert.ToDouble(xy[2])
+                            };
+                            oneLine.Add(coord);
+                        }
                     }
                     if (oneLine.Count > 0)
                     {

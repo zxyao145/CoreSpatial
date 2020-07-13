@@ -27,7 +27,7 @@ namespace CoreSpatial.Converter.KML
                         var multiPoint = (MultiPoint)basicGeometry;
                         foreach (var point in multiPoint.Points)
                         {
-                            var strText = $"{point.X},{point.Y}";
+                            var strText = GetText(point);
                             var coordinatesEleTemp = new XElement("coordinates");
                             coordinatesEleTemp.SetValue(strText);
                             var pointEle = new XElement("Point");
@@ -65,7 +65,7 @@ namespace CoreSpatial.Converter.KML
                         var points = new List<string>();
                         foreach (var coordinate in coords)
                         {
-                            points.Add($"{coordinate.X},{coordinate.Y}");
+                            points.Add(GetText(coordinate));
                         }
                         var coordinatesEle = new XElement("coordinates");
                         coordinatesEle.SetValue(string.Join(" ", points));
@@ -113,6 +113,20 @@ namespace CoreSpatial.Converter.KML
             }
             
             return result;
+        }
+
+        private static string GetText(GeoPoint point)
+        {
+            return GetText(point.Coordinate);
+        }
+
+        private static string GetText(Coordinate coordinate)
+        {
+            if (double.IsNaN(coordinate.Z))
+            {
+                return $"{coordinate.X},{coordinate.Y}";
+            }
+            return $"{coordinate.X},{coordinate.Y},{coordinate.Z}";
         }
 
     }

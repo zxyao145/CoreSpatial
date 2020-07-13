@@ -14,9 +14,9 @@ namespace CoreSpatial.BasicGeometrys
             _coordinate = new Coordinate();
         }
 
-        public GeoPoint(double x, double y)
+        public GeoPoint(double x, double y, double z = double.NaN)
         {
-            _coordinate = new Coordinate(x, y);
+            _coordinate = new Coordinate(x, y, z);
         }
 
         private readonly Coordinate _coordinate;
@@ -38,12 +38,30 @@ namespace CoreSpatial.BasicGeometrys
             get => _coordinate.Y;
             set => _coordinate.Y = value;
         }
+
+        /// <summary>
+        /// Z坐标
+        /// </summary>
+        public double Z
+        {
+            get => _coordinate.Z;
+            set => _coordinate.Z = value;
+        }
         
         public void SetPoint(double x, double y)
         {
             this.X = x;
             this.Y = y;
         }
+
+        public void SetPoint(double x, double y, double z)
+        {
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
+        }
+
+        public bool IsPointZ => this.Z == double.NaN;
 
         /// <summary>
         /// 坐标对

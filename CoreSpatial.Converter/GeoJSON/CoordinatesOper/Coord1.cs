@@ -12,12 +12,20 @@ namespace CoreSpatial.Converter.GeoJSON.CoordinatesOper
     {
         protected List<double> GetFeatureCoordinates(Coordinate coor)
         {
-            return new List<double>() { coor.X, coor.Y };
+            if (double.IsNaN(coor.Z))
+            {
+                return new List<double>() { coor.X, coor.Y };
+            }
+            else
+            {
+                return new List<double>() { coor.X, coor.Y, coor.Z };
+            }
         }
+
         public List<double> GetCoords(IFeature feature)
         {
             var coor = feature.Geometry.BasicGeometry.Coordinates.ToList()[0];
-            return new List<double>() { coor.X, coor.Y };
+            return GetFeatureCoordinates(coor);
         }
     }
 }

@@ -8,8 +8,6 @@ namespace CoreSpatial.Analysis.Tyson
 {
     public class VoronoiBuilder
     {
-        private static int _envelopeEpsilon = 10;
-
         /// <summary>
         /// 获取Voronoi多边形的线
         /// </summary>

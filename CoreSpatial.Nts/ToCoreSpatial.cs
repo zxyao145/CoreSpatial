@@ -17,17 +17,22 @@ namespace CoreSpatial.Nts
         public static CoreSpatial.BasicGeometrys.GeoPoint
             TcsGeometry(this Point point)
         {
-            var gp = new GeoPoint(point.X, point.Y);
-
-            return gp;
+            return point.Coordinate.TcsGeometry();
         }
 
         public static CoreSpatial.BasicGeometrys.GeoPoint
             TcsGeometry(this Coordinate coordinate)
         {
-            var gp = new GeoPoint(coordinate.X, coordinate.Y);
-
-            return gp;
+            if (double.IsNaN(coordinate.Z))
+            {
+                var gp = new GeoPoint(coordinate.X, coordinate.Y);
+                return gp;
+            }
+            else
+            {
+                var gp = new GeoPoint(coordinate.X, coordinate.Y, coordinate.Z);
+                return gp;
+            }
         }
 
         public static CoreSpatial.BasicGeometrys.MultiPoint

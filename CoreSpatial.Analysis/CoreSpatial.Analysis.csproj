@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Tin\" />
+    <PackageReference Include="CoreSpatial" Version="0.3.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CoreSpatial" Version="0.3.2" />
+    <ProjectReference Include="..\CoreSpatial\CoreSpatial.csproj" />
   </ItemGroup>
 
 </Project>
