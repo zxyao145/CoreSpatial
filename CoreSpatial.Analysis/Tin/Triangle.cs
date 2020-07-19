@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
+/// <summary>
+/// translated from turf
+/// </summary>
 namespace CoreSpatial.Analysis.Tin
 {
     public class Triangle
