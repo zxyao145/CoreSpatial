@@ -1,21 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyVersion>0.3.4.0</AssemblyVersion>
-    <FileVersion>0.3.4.0</FileVersion>
-    <Version>0.3.4</Version>
-    <PackageId>CoreSpatial</PackageId>
-    <Authors>zxyao</Authors>
-    <PackageTags>shapefile;gis;corespatial</PackageTags>
-    <Company></Company>
-    <RepositoryUrl>https://github.com/zxyao145/CoreSpatial</RepositoryUrl>
-    <Description>CoreSpatial is a class library based on .Net Standard v2.1 to read and write shapefiles. It supports the reading and writing of projection file .prj (support by ProjNet).
-</Description>
-    <PackageProjectUrl></PackageProjectUrl>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="ProjNet" Version="2.0.0" />
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.1" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<AssemblyVersion>0.3.4.0</AssemblyVersion>
+		<FileVersion>0.3.4.0</FileVersion>
+		<Version>0.3.4</Version>
+		<PackageId>CoreSpatial</PackageId>
+		<Authors>zxyao</Authors>
+		<PackageTags>shapefile;gis;corespatial</PackageTags>
+		<Company></Company>
+		<RepositoryUrl>https://github.com/zxyao145/CoreSpatial</RepositoryUrl>
+		<Description>
+			CoreSpatial is a class library based on .Net Standard v2.1 to read and write shapefiles. It supports the reading and writing of projection file .prj (support by ProjNet).
+		</Description>
+		<PackageProjectUrl></PackageProjectUrl>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="ProjNet" Version="2.0.0" />
+		<PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.1" />
+	</ItemGroup>
 </Project>
