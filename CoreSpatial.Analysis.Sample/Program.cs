@@ -1,6 +1,7 @@
 ﻿using CoreSpatial.Analysis.Tin;
 using CoreSpatial.Converter;
 using System;
+using CoreSpatial.Analysis;
 
 namespace CoreSpatial.Analysis.Sample
 {
@@ -9,9 +10,8 @@ namespace CoreSpatial.Analysis.Sample
         static void Main(string[] args)
         {
             var fs = FeatureSet.Open(@"D:\Users\admin\Documents\1111测试Data\point-tyson.shp");
-            var tinBuilder = new TinBuilder();
 
-            var tin = tinBuilder.Build(fs);
+            var tin = fs.Tin();
             var fecc = tin.ToGeoJSON();
             Console.WriteLine(fs.ToGeoJSON());
 
