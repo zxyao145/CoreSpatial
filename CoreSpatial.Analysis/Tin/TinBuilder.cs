@@ -8,9 +8,9 @@ using System.Text;
 
 namespace CoreSpatial.Analysis.Tin
 {
-    public class TinBuilder
+    internal class TinBuilder
     {
-        public FeatureSet Build(FeatureSet featureSet)
+        public FeatureSet Build(IFeatureSet featureSet)
         {
             if(featureSet.FeatureType != FeatureType.Point)
             {
