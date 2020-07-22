@@ -1,6 +1,6 @@
 ﻿namespace CoreSpatial.Analysis.Tyson
 {
-    public class GraphEdge
+    internal class GraphEdge
     {
         public GraphEdge()
             : this(new TysonGeoPoint(), new TysonGeoPoint())
@@ -66,5 +66,39 @@
         /// 与这条边相对应的点2的索引
         /// </summary>
         public int Point2Index { get; set; }
+
+
+        public override bool Equals(object obj)
+        {
+            if(obj == null)
+            {
+                return false;
+            }
+            if(obj is GraphEdge otherGraphEdge)
+            {
+                if(!ReferenceEquals(this, otherGraphEdge))
+                {
+                    return IsEquals(otherGraphEdge, false);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Start.GetHashCode() & this.End.GetHashCode();
+        }
+
+        public bool IsEquals(GraphEdge otherGraphEdge, bool ignoreOrder = false)
+        {
+            var result = this.Start == otherGraphEdge.Start && this.End == otherGraphEdge.End;
+            if (ignoreOrder)
+            {
+                result = result || this.Start == otherGraphEdge.End && this.End == otherGraphEdge.Start;
+            }
+
+            return result;
+        }
     }
 }
