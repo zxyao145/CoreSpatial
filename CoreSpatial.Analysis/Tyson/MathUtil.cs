@@ -129,7 +129,7 @@ namespace CoreSpatial.Analysis.Tyson
         /// <param name="pt"></param>
         /// <param name="line"></param>
         /// <returns></returns>
-        public virtual double GetVerticalDistance
+        internal virtual double GetVerticalDistance
             (GeoPoint pt, GraphEdge line) //所在点到AB线段的垂线长度
         {
             var x = pt.X;
@@ -206,7 +206,7 @@ namespace CoreSpatial.Analysis.Tyson
         /// <param name="pt"></param>
         /// <param name="edge"></param>
         /// <returns></returns>
-        public static double Distance2ToMidPoint(GeoPoint pt, GraphEdge edge)
+        internal static double Distance2ToMidPoint(GeoPoint pt, GraphEdge edge)
         {
             var midPt = new GeoPoint(
                 (edge.Start.X + edge.End.X) / 2,

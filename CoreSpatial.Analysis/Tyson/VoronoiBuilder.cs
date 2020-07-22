@@ -6,7 +6,7 @@ using CoreSpatial.BasicGeometrys;
 
 namespace CoreSpatial.Analysis.Tyson
 {
-    public class VoronoiBuilder
+    internal class VoronoiBuilder
     {
         /// <summary>
         /// 获取Voronoi多边形的线
