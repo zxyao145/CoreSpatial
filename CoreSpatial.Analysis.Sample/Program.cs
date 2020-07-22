@@ -9,7 +9,7 @@ namespace CoreSpatial.Analysis.Sample
     {
         static void Main(string[] args)
         {
-            Convex();
+            Tyson();
             Console.WriteLine();
             Console.WriteLine("Hello World!");
             Console.ReadLine();
@@ -42,5 +42,24 @@ namespace CoreSpatial.Analysis.Sample
             Console.WriteLine(fecc);
 
         }
+
+        static void Tyson()
+        {
+            var fs = FeatureSet.Open(@"./data/Point.shp");
+            Console.WriteLine(fs.ToGeoJSON());
+            var envelope = new double[]
+            {
+                fs.Envelope.MinX,
+                fs.Envelope.MinY,
+                fs.Envelope.MaxX,
+                fs.Envelope.MaxY
+            };
+            var tyson = fs.Tyson(envelope);
+            var tysonJson = tyson.ToGeoJSON();
+
+            Console.WriteLine(tysonJson);
+            Console.WriteLine();
+        }
+
     }
 }

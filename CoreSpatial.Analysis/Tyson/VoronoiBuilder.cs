@@ -32,12 +32,12 @@ namespace CoreSpatial.Analysis.Tyson
             }
             
             var voronoiObject = new Voronoi(minDistanceTolerance);
-            var graphEdges = voronoiObject.generateVoronoi(xVal, yVal,
+            var graphEdgeList = voronoiObject.GenerateVoronoi(xVal, yVal,
                 envelope[0], envelope[2],
                 envelope[1], envelope[3]);
-
+            var graphEdges = new HashSet<GraphEdge>(graphEdgeList).ToList();
             var index = 0;
-            var removeIndexs = new List<int>();
+            var removeIndexs = new HashSet<int>();
             foreach (var graphEdge in graphEdges)
             {
                 var edgeLinePt1 = graphEdge.Start;
@@ -49,8 +49,9 @@ namespace CoreSpatial.Analysis.Tyson
 
                 index++;
             }
-            removeIndexs.Reverse();
 
+
+            removeIndexs.Reverse();
             foreach (var i1 in removeIndexs)
             {
                 graphEdges.RemoveAt(i1);

@@ -124,7 +124,7 @@ namespace CoreSpatial.Analysis.Tyson.Core
 		 * @return
 		 */
 		// تستدعى هذه العملية لإنشاء مخطط فورونوي
-		public List<GraphEdge> generateVoronoi(double[] xValuesIn, double[] yValuesIn, double minX, double maxX, double minY, double maxY)
+		public List<GraphEdge> GenerateVoronoi(double[] xValuesIn, double[] yValuesIn, double minX, double maxX, double minY, double maxY)
 		{
 			sort(xValuesIn, yValuesIn, xValuesIn.Length);
 
