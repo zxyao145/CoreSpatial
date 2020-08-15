@@ -228,7 +228,7 @@ namespace CoreSpatial.Dbf
                     var remainderBytes = new byte[remainderLength];
                     for (int j = 0; j < remainderLength; j++)
                     {
-                        remainderBytes[i] = 0;
+                        remainderBytes[j] = 0;
                     }
                     Buffer.BlockCopy(remainderBytes, 0, 
                         curColumnInfo, fieldName.Length,
