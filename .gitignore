@@ -356,3 +356,4 @@ nugetPush.txt
 azure-pipelines.yml
 CoreSpatial/obj
 CoreSpatial.Test/obj
+!CoreSpatial.Test/bin/Debug/测试Data/
