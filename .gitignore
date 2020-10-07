@@ -354,6 +354,5 @@ MigrationBackup/
 
 nugetPush.txt
 azure-pipelines.yml
-
 CoreSpatial/obj
 CoreSpatial.Test/obj
