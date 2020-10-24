@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
-		<AssemblyVersion>0.3.5.0</AssemblyVersion>
-		<FileVersion>0.3.5.0</FileVersion>
-		<Version>0.3.5</Version>
+		<TargetFramework>net5.0</TargetFramework>
+		<AssemblyVersion>0.4.0.0</AssemblyVersion>
+		<FileVersion>0.4.0.0</FileVersion>
+		<Version>0.4.0</Version>
 		<PackageId>CoreSpatial.Converter</PackageId>
 		<PackageTags>CoreSpatial;data format conversion</PackageTags>
 		<Authors>zxyao</Authors>
@@ -16,7 +16,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<!--<PackageReference Include="CoreSpatial" Version="0.4.0" />-->
 		<PackageReference Include="Jil" Version="2.17.0" />
-		<PackageReference Include="CoreSpatial" Version="0.3.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CoreSpatial\CoreSpatial.csproj" />
 	</ItemGroup>
 </Project>

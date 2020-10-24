@@ -1,16 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CoreSpatial.Converter" Version="0.3.4" />
-  </ItemGroup>
+  <!--<ItemGroup>
+    <PackageReference Include="CoreSpatial.Converter" Version="0.4.0" />
+  </ItemGroup>-->
 
   <ItemGroup>
     <ProjectReference Include="..\CoreSpatial.Analysis\CoreSpatial.Analysis.csproj" />
+    <ProjectReference Include="..\CoreSpatial.Converter\CoreSpatial.Converter.csproj" />
   </ItemGroup>
 
 </Project>
