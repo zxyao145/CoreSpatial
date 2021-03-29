@@ -11,6 +11,12 @@ namespace CoreSpatial.Analysis
 {
     public static class FeatureSetExtensions
     {
+        /// <summary>
+        /// Voronoi  
+        /// </summary>
+        /// <param name="featureSet"></param>
+        /// <param name="envelope"></param>
+        /// <returns></returns>
         public static IFeatureSet Tyson(this IFeatureSet featureSet, double[] envelope)
         {
             if (featureSet is null)
@@ -22,6 +28,11 @@ namespace CoreSpatial.Analysis
             return tyson.Analysis(featureSet, envelope);
         }
 
+        /// <summary>
+        /// create tin
+        /// </summary>
+        /// <param name="featureSet"></param>
+        /// <returns></returns>
         public static IFeatureSet Tin(this IFeatureSet featureSet)
         {
             if (featureSet is null)
@@ -32,7 +43,13 @@ namespace CoreSpatial.Analysis
             var tinBuilder = new TinBuilder();
             return tinBuilder.Build(featureSet);
         }
-    
+
+        /// <summary>
+        /// get convex hull
+        /// </summary>
+        /// <param name="featureSet"></param>
+        /// <param name="concavity"></param>
+        /// <returns></returns>
         public static IFeatureSet Convex(this IFeatureSet featureSet, int concavity = 20)
         {
             var features = featureSet.Features;

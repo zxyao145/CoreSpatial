@@ -17,11 +17,12 @@
 		<Description>A spatial analysis library based on CoreSpatial</Description>
 	</PropertyGroup>
 
-	<!--<ItemGroup>
-		<PackageReference Include="CoreSpatial" Version="0.4.0" />
-	</ItemGroup>-->
 
-	<ItemGroup>
+	<ItemGroup Condition=" '$(Configuration)' == 'Release' ">
+		<PackageReference Include="CoreSpatial" Version="0.4.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
 		<ProjectReference Include="..\CoreSpatial\CoreSpatial.csproj" />
 	</ItemGroup>
 </Project>
