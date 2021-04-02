@@ -56,13 +56,13 @@ namespace CoreSpatial.Dbf
                 for (int i = 1; i <= this.FieldCount; i++)
                 {
                     var offset = i * 32;
-
+                    var typeChar = Encoding.GetChars(tableHeader, offset + 11, 1)[0];
                     var fieldInfo = new DbfFieldInfo
                     {
                         FieldName = Encoding
                             .GetString(tableHeader, offset, 10)
                             .Replace("\0",""),
-                        FieldType = (DbfFieldType)
+                        FieldType = typeChar == 'F' ? DbfFieldType .Numeric : (DbfFieldType)
                             (Encoding
                                 .GetChars(tableHeader, offset + 11, 1)[0]),
                         FieldLength = tableHeader[offset + 16],
