@@ -1,22 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
-		<AssemblyVersion>0.4.0.0</AssemblyVersion>
-		<FileVersion>0.4.0.0</FileVersion>
-		<Version>0.4.0</Version>
 		<PackageId>CoreSpatial.Analysis</PackageId>
-		<RepositoryType>git</RepositoryType>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Copyright>zxyao</Copyright>
-		<Authors>zxyao</Authors>
 		<PackageTags>shapefile;gis;corespatial;corespatial.analysis</PackageTags>
-		<Company></Company>
-		<RepositoryUrl>https://github.com/zxyao/CoreSpatial</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/zxyao/CoreSpatial</PackageProjectUrl>
-		<Description>A spatial analysis library based on CoreSpatial</Description>
+				<Description>A spatial analysis library based on CoreSpatial</Description>
 	</PropertyGroup>
 
+	<Import Project="..\assembly.proj" />
 
 	<ItemGroup Condition=" '$(Configuration)' == 'Release' ">
 		<PackageReference Include="CoreSpatial" Version="0.4.0" />

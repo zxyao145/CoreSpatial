@@ -25,7 +25,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreSpatial.Analysis", "Cor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CoreSpatial.Analysis-Folder", "CoreSpatial.Analysis-Folder", "{3108555A-2410-4B92-8DF8-131052FFEA15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreSpatial.Analysis.Sample", "CoreSpatial.Analysis.Sample\CoreSpatial.Analysis.Sample.csproj", "{079EFCA8-877A-466D-8766-6FCCB2400AD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreSpatial.Analysis.Sample", "CoreSpatial.Analysis.Sample\CoreSpatial.Analysis.Sample.csproj", "{079EFCA8-877A-466D-8766-6FCCB2400AD5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D22B2CDE-1FEB-4F8B-814E-5B337F1BDFC2}"
+	ProjectSection(SolutionItems) = preProject
+		assembly.proj = assembly.proj
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
